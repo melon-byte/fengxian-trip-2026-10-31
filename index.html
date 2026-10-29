@@ -244,6 +244,31 @@
       color: var(--muted);
       font-size: 13px;
     }
+    .section-head-copy { min-width: 0; }
+    .track-controls {
+      display: flex;
+      flex: 0 0 auto;
+      gap: 7px;
+    }
+    .track-arrow {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      padding: 0;
+      border: 1px solid #cbd9c8;
+      border-radius: 50%;
+      background: var(--white);
+      color: var(--green-deep);
+      cursor: pointer;
+      transition: background-color .15s, border-color .15s, opacity .15s;
+    }
+    .track-arrow:hover:not(:disabled) {
+      border-color: var(--green);
+      background: var(--green-soft);
+    }
+    .track-arrow:disabled { opacity: .35; cursor: default; }
+    .track-arrow svg { width: 16px; height: 16px; }
 
     .day-layout {
       display: grid;
@@ -444,50 +469,47 @@
     }
     .route-roads b { color: var(--green-deep); }
 
-    .dining-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      align-items: start;
+    .card-track {
+      display: flex;
+      gap: 12px;
+      align-items: stretch;
+      overflow-x: auto;
+      padding: 2px 1px 10px;
+      scroll-padding-inline: 1px;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      overscroll-behavior-x: contain;
+      -webkit-overflow-scrolling: touch;
     }
-    .meal-group { min-width: 0; }
-    .meal-group-head {
-      margin-bottom: 10px;
-      padding: 0 2px 10px;
-      border-bottom: 1px solid var(--line);
-    }
-    .meal-group-head small {
-      display: block;
-      color: var(--gold);
-      font-size: 11px;
-      font-weight: 900;
-    }
-    .meal-group-head h3 {
-      margin: 3px 0 0;
-      color: var(--green-deep);
-      font-size: 18px;
-      line-height: 1.4;
-    }
-    .meal-options {
-      display: grid;
-      gap: 10px;
-    }
-    .meal-alternatives {
-      margin: 8px 2px 0;
-      color: var(--muted);
-      font-size: 11px;
-      line-height: 1.7;
-    }
-    .meal-alternatives a {
-      color: var(--green-deep);
-      font-weight: 900;
+    .card-track::-webkit-scrollbar { display: none; }
+    .card-track > article {
+      flex: 0 0 calc((100% - 24px) / 3);
+      min-width: 0;
+      scroll-snap-align: start;
     }
     .restaurant-card {
-      padding: 14px;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      padding: 15px;
       border: 1px solid var(--line);
+      border-top: 3px solid var(--green);
       border-radius: 8px;
       background: var(--white);
       box-shadow: var(--shadow);
+    }
+    .restaurant-card.is-alternative { border-top-color: var(--gold); }
+    .restaurant-meal {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .restaurant-meal > span:first-child {
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 900;
     }
     .restaurant-top {
       display: flex;
@@ -498,15 +520,15 @@
     .restaurant-top h4 {
       margin: 0;
       color: var(--green-deep);
-      font-size: 15px;
+      font-size: 17px;
       line-height: 1.45;
     }
     .restaurant-tag {
       flex: 0 0 auto;
       padding: 2px 6px;
       border-radius: 4px;
-      background: var(--green-soft);
-      color: var(--green-deep);
+      background: var(--gold-soft);
+      color: #79581f;
       font-size: 10px;
       font-weight: 900;
     }
@@ -517,11 +539,13 @@
       font-weight: 900;
     }
     .restaurant-note {
-      margin: 6px 0 10px;
+      flex: 1 0 auto;
+      margin: 7px 0 12px;
       color: var(--muted);
       font-size: 12px;
       line-height: 1.65;
     }
+    .restaurant-foot { margin-top: auto; }
     .restaurant-link {
       display: inline-flex;
       align-items: center;
@@ -533,6 +557,122 @@
       font-weight: 900;
     }
     .restaurant-link:hover { background: var(--green-soft); text-decoration: none; }
+    .restaurant-text-action {
+      display: inline-flex;
+      padding: 4px 0;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .play-card {
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 360px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+    .play-visual {
+      position: relative;
+      height: 150px;
+      flex: 0 0 auto;
+      overflow: hidden;
+      background: var(--green-soft);
+    }
+    .play-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .play-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(20, 42, 31, .48), transparent 62%);
+      pointer-events: none;
+    }
+    .play-visual-label {
+      position: absolute;
+      left: 12px;
+      bottom: 10px;
+      z-index: 1;
+      padding: 3px 7px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, .94);
+      color: var(--green-deep);
+      font-size: 10px;
+      font-weight: 900;
+    }
+    .play-visual--night {
+      display: grid;
+      align-content: end;
+      padding: 16px;
+      background: var(--green-deep);
+    }
+    .play-visual--night::after { display: none; }
+    .play-visual--fallback {
+      display: grid;
+      align-items: end;
+      padding: 16px;
+      background: var(--green-deep);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 900;
+    }
+    .play-visual--fallback::after { display: none; }
+    .play-visual--night strong {
+      color: #fff;
+      font-size: 30px;
+      line-height: 1.1;
+    }
+    .play-visual--night span {
+      margin-top: 4px;
+      color: #dceadf;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .play-body {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 15px;
+    }
+    .play-time {
+      margin: 0;
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 900;
+    }
+    .play-body h3 {
+      margin: 4px 0 0;
+      color: var(--green-deep);
+      font-size: 19px;
+      line-height: 1.35;
+    }
+    .play-note {
+      flex: 1 0 auto;
+      margin: 8px 0 12px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.65;
+    }
+    .play-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: auto;
+    }
+    .play-tags span {
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: #f3f6ef;
+      color: var(--green-deep);
+      font-size: 10px;
+      font-weight: 900;
+    }
     .dining-note {
       margin-top: 14px;
       padding: 14px 16px;
@@ -599,10 +739,12 @@
     footer strong { color: var(--green-deep); }
 
     @media (max-width: 920px) {
-      .hero-grid, .mainline-card, .day-layout, .dining-grid, .notes-grid { grid-template-columns: 1fr; }
+      .hero-grid, .mainline-card, .day-layout, .notes-grid { grid-template-columns: 1fr; }
       .side-card { position: static; }
       .key-strip { grid-template-columns: repeat(2, 1fr); }
       .section-head { align-items: flex-start; flex-direction: column; gap: 8px; }
+      .card-track > article { flex-basis: calc((100% - 12px) / 2); }
+      .section-head .track-controls { align-self: flex-end; margin-top: -8px; }
     }
 
     @media (max-width: 620px) {
@@ -628,12 +770,22 @@
       .route-link { display: inline-block; margin-top: 6px; padding: 3px 7px; font-size: 10px; }
       .route-visual { margin: 0 8px 8px; }
       .route-visual svg { height: 96px; }
+      .card-track {
+        margin-inline: -16px;
+        padding-inline: 16px;
+        scroll-padding-inline: 16px;
+      }
+      .card-track > article { flex-basis: 86%; }
+      .track-controls { display: none; }
+      .restaurant-card { min-height: 210px; }
+      .play-card { min-height: 340px; }
+      .play-visual { height: 138px; }
     }
 
     @media print {
       .topbar { display: none; }
       body { background: #fff; }
-      .timeline-card, .side-card, .route-card, .restaurant-card, .note-box, .key-item { box-shadow: none; break-inside: avoid; }
+      .timeline-card, .side-card, .route-card, .restaurant-card, .play-card, .note-box, .key-item { box-shadow: none; break-inside: avoid; }
       .section { padding: 18px 0; }
     }
   </style>
@@ -650,6 +802,7 @@
         <a href="#overview">总览</a>
         <a href="#saturday">周六</a>
         <a href="#sunday">周日</a>
+        <a href="#play">玩什么</a>
         <a href="#dining">吃哪家</a>
         <a href="#transport">交通</a>
         <a href="#notes">备注</a>
@@ -879,69 +1032,176 @@
       </div>
     </section>
 
+    <section class="section" id="play">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-head-copy">
+            <h2>玩什么，只留四个重点</h2>
+            <p>白天慢逛，晚上回民宿；雨天就少走一段，不为补点位临时绕路。</p>
+          </div>
+          <div class="track-controls" data-track-controls="play-track">
+            <button class="track-arrow" type="button" data-track-prev aria-label="上一组玩乐">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m15 18-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button class="track-arrow" type="button" data-track-next aria-label="下一组玩乐">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9 18 6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="card-track" id="play-track" tabindex="0" aria-label="玩乐安排横向卡片">
+          <article class="play-card">
+            <div class="play-visual">
+              <img src="https://dimg04.c-ctrip.com/images/0102h12000fathns65549_W_1080_0_Q80.jpg" alt="上海海湾国家森林公园水杉林" loading="lazy" referrerpolicy="no-referrer">
+              <span class="play-visual-label">周六下午</span>
+            </div>
+            <div class="play-body">
+              <p class="play-time">13:00–16:00 · 约 3 小时</p>
+              <h3>海湾森林公园</h3>
+              <p class="play-note">水杉林、百鸟湖只走核心一段，坐船或观光车二选一；15:30 停止入园。</p>
+              <div class="play-tags"><span>核心慢逛</span><span>16:00 出园</span></div>
+            </div>
+          </article>
+
+          <article class="play-card">
+            <div class="play-visual play-visual--night">
+              <strong>19:00</strong>
+              <span>回民宿，不再夜驾</span>
+            </div>
+            <div class="play-body">
+              <p class="play-time">周六晚上 · 民宿内</p>
+              <h3>民宿自由局</h3>
+              <p class="play-note">麻将、KTV、桌游选一个主项目，按大家状态来；这一晚不临时加夜游。</p>
+              <div class="play-tags"><span>一个主项目</span><span>分装早餐</span></div>
+            </div>
+          </article>
+
+          <article class="play-card">
+            <div class="play-visual">
+              <img src="./trip-final-assets/liyao-318.jpg" alt="李窑村稻田与 318PARK" loading="lazy">
+              <span class="play-visual-label">周日上午</span>
+            </div>
+            <div class="play-body">
+              <p class="play-time">11:00–12:15 · 约 75 分钟</p>
+              <h3>李窑村</h3>
+              <p class="play-note">停 P1 后逛稻田、村巷和村咖。手作提前约；雨天不排皮划艇和小火车。</p>
+              <div class="play-tags"><span>稻田村巷</span><span>村咖</span></div>
+            </div>
+          </article>
+
+          <article class="play-card">
+            <div class="play-visual">
+              <img src="https://aos-comment.amap.com/B0FFJWJC9Y/comment/content_media_external_images_media_1000226722_ss__1744222731162_42798914.jpg" alt="青溪老街河巷与古桥" loading="lazy" referrerpolicy="no-referrer">
+              <span class="play-visual-label">周日下午</span>
+            </div>
+            <div class="play-body">
+              <p class="play-time">13:50–16:20 · 约 2.5 小时</p>
+              <h3>青溪老街</h3>
+              <p class="play-note">看古桥、河巷，再去一尺花园坐一会儿；雨天慢走，下午茶后直接返程。</p>
+              <div class="play-tags"><span>古桥河巷</span><span>下午茶</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="dining">
       <div class="wrap">
         <div class="section-head">
-          <h2>三顿正餐，各留一个首选</h2>
-          <p>全部外食。首选没位再用同组备选，不在饭点跨片区跑。</p>
+          <div class="section-head-copy">
+            <h2>三顿正餐，候选排成一条线</h2>
+            <p>按餐次从左到右排列；首选没位，就换同一餐的备选。</p>
+          </div>
+          <div class="track-controls" data-track-controls="dining-track">
+            <button class="track-arrow" type="button" data-track-prev aria-label="上一组餐厅">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m15 18-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button class="track-arrow" type="button" data-track-next aria-label="下一组餐厅">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9 18 6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
         </div>
 
-        <div class="dining-grid">
-          <section class="meal-group" aria-labelledby="lunch-sat">
-            <div class="meal-group-head">
-              <small>周六午饭</small>
-              <h3 id="lunch-sat">海湾森林公园周边</h3>
-            </div>
-            <div class="meal-options">
-              <article class="restaurant-card">
-                <div class="restaurant-top">
-                  <h4>海湾农家菜</h4>
-                  <span class="restaurant-tag">路线默认</span>
-                </div>
-                <p class="restaurant-meta">美团 3.9 · 距 1 号门约 4.2 公里 · 免费停车</p>
-                <p class="restaurant-note">有 8–10 人桌和包厢，导航与路线都按这家走。</p>
-                <a class="restaurant-link" href="http://dpurl.cn/zSnH1eOz" target="_blank" rel="noopener">美团看店</a>
-              </article>
-            </div>
-            <p class="meal-alternatives">备选：<a href="http://dpurl.cn/EEGCvM9z" target="_blank" rel="noopener">海湾觅味</a>（4.9） · <a href="http://dpurl.cn/Sm0iznaz" target="_blank" rel="noopener">开心小筑</a>（距 1 号门约 1.2 公里）</p>
-          </section>
+        <div class="card-track" id="dining-track" tabindex="0" aria-label="餐厅候选横向卡片">
+          <article class="restaurant-card">
+            <div class="restaurant-meal"><span>周六午饭 · 海湾</span><span class="restaurant-tag">首选</span></div>
+            <div class="restaurant-top"><h4>海湾农家菜</h4></div>
+            <p class="restaurant-meta">美团 3.9 · 距 1 号门约 4.2 公里 · 免费停车</p>
+            <p class="restaurant-note">有 8–10 人桌和包厢，导航与路线都按这家走。</p>
+            <div class="restaurant-foot"><a class="restaurant-link" href="http://dpurl.cn/zSnH1eOz" target="_blank" rel="noopener">美团看店</a></div>
+          </article>
 
-          <section class="meal-group" aria-labelledby="dinner-sat">
-            <div class="meal-group-head">
-              <small>周六晚饭</small>
-              <h3 id="dinner-sat">奉贤晚饭 · 首选与备选</h3>
-            </div>
-            <div class="meal-options">
-              <article class="restaurant-card">
-                <div class="restaurant-top">
-                  <h4>虹辉饭店</h4>
-                  <span class="restaurant-tag">8 人首选</span>
-                </div>
-                <p class="restaurant-meta">约 10 分钟车程 · 本帮农家菜 + 小海鲜</p>
-                <p class="restaurant-note">有宴会厅、停车方便；出发前电话确认 8 人大桌。</p>
-              </article>
-            </div>
-            <p class="meal-alternatives">备选：小木屋（最省事，饭后直接回民宿） · <a href="http://dpurl.cn/EEGCvM9z" target="_blank" rel="noopener">海湾觅味</a>（4.9，农垦菜） · <a href="http://dpurl.cn/TcAqcsUz" target="_blank" rel="noopener">地锅那年</a>（4.4） · <a href="http://dpurl.cn/bi2nohpz" target="_blank" rel="noopener">一品鲜</a>（4.8）</p>
-          </section>
+          <article class="restaurant-card is-alternative">
+            <div class="restaurant-meal"><span>周六午饭 · 海湾</span><span class="restaurant-tag">备选</span></div>
+            <div class="restaurant-top"><h4>海湾觅味</h4></div>
+            <p class="restaurant-meta">美团 4.9 · 农垦菜 · 周六晚饭也可备选</p>
+            <p class="restaurant-note">同片区口味备选；午饭首选没位时，直接改订这家。</p>
+            <div class="restaurant-foot"><a class="restaurant-link" href="http://dpurl.cn/EEGCvM9z" target="_blank" rel="noopener">美团看店</a></div>
+          </article>
 
-          <section class="meal-group" aria-labelledby="lunch-sun">
-            <div class="meal-group-head">
-              <small>周日午饭</small>
-              <h3 id="lunch-sun">青溪老街里面或旁边</h3>
-            </div>
-            <div class="meal-options">
-              <article class="restaurant-card">
-                <div class="restaurant-top">
-                  <h4>屋里厢饭店</h4>
-                  <span class="restaurant-tag">7 人首选</span>
-                </div>
-                <p class="restaurant-meta">距老街约 0.2 公里 · 本帮私房菜 · 人均约 80 元</p>
-                <p class="restaurant-note">有 10–20 人包厢和大桌，午饭后继续逛老街最顺。</p>
-                <a class="restaurant-link" href="http://dpurl.cn/5IDJ2GTz" target="_blank" rel="noopener">美团看店</a>
-              </article>
-            </div>
-            <p class="meal-alternatives">备选：<a href="http://dpurl.cn/WKnb9MBz" target="_blank" rel="noopener">聚味楼</a>（距老街约 0.1 公里） · <a href="http://dpurl.cn/9zc0bcFz" target="_blank" rel="noopener">财记小菜</a></p>
-          </section>
+          <article class="restaurant-card is-alternative">
+            <div class="restaurant-meal"><span>周六午饭 · 海湾</span><span class="restaurant-tag">备选</span></div>
+            <div class="restaurant-top"><h4>开心小筑</h4></div>
+            <p class="restaurant-meta">距森林公园 1 号门约 1.2 公里</p>
+            <p class="restaurant-note">离公园更近，适合午饭后尽快进园；人数和桌型出发前确认。</p>
+            <div class="restaurant-foot"><a class="restaurant-link" href="http://dpurl.cn/Sm0iznaz" target="_blank" rel="noopener">美团看店</a></div>
+          </article>
+
+          <article class="restaurant-card">
+            <div class="restaurant-meal"><span>周六晚饭 · 奉贤</span><span class="restaurant-tag">首选</span></div>
+            <div class="restaurant-top"><h4>虹辉饭店</h4></div>
+            <p class="restaurant-meta">约 10 分钟车程 · 本帮农家菜 + 小海鲜</p>
+            <p class="restaurant-note">有宴会厅、停车方便；出发前电话确认 8 人大桌。</p>
+            <div class="restaurant-foot"><span class="restaurant-text-action">出发前电话确认桌型</span></div>
+          </article>
+
+          <article class="restaurant-card is-alternative">
+            <div class="restaurant-meal"><span>周六晚饭 · 省事备选</span><span class="restaurant-tag">备选</span></div>
+            <div class="restaurant-top"><h4>小木屋</h4></div>
+            <p class="restaurant-meta">饭后直接回民宿 · 住宿型度假村</p>
+            <p class="restaurant-note">这次只当晚饭省事备选；卡丁车、KTV 等项目是否对非住客开放未确认。</p>
+            <div class="restaurant-foot"><span class="restaurant-text-action">不把未确认项目排进行程</span></div>
+          </article>
+
+          <article class="restaurant-card is-alternative">
+            <div class="restaurant-meal"><span>周六晚饭 · 奉贤</span><span class="restaurant-tag">备选</span></div>
+            <div class="restaurant-top"><h4>地锅那年</h4></div>
+            <p class="restaurant-meta">美团 4.4 · 地方菜备选</p>
+            <p class="restaurant-note">想吃热乎的地锅菜就换这家；出发前按 8 人确认桌型。</p>
+            <div class="restaurant-foot"><a class="restaurant-link" href="http://dpurl.cn/TcAqcsUz" target="_blank" rel="noopener">美团看店</a></div>
+          </article>
+
+          <article class="restaurant-card is-alternative">
+            <div class="restaurant-meal"><span>周六晚饭 · 奉贤</span><span class="restaurant-tag">备选</span></div>
+            <div class="restaurant-top"><h4>一品鲜</h4></div>
+            <p class="restaurant-meta">美团 4.8 · 本地菜备选</p>
+            <p class="restaurant-note">适合想再换一家本地口味的桌；出发前按 8 人确认桌型。</p>
+            <div class="restaurant-foot"><a class="restaurant-link" href="http://dpurl.cn/bi2nohpz" target="_blank" rel="noopener">美团看店</a></div>
+          </article>
+
+          <article class="restaurant-card">
+            <div class="restaurant-meal"><span>周日午饭 · 青溪</span><span class="restaurant-tag">首选</span></div>
+            <div class="restaurant-top"><h4>屋里厢饭店</h4></div>
+            <p class="restaurant-meta">距老街约 0.2 公里 · 本帮私房菜 · 人均约 80 元</p>
+            <p class="restaurant-note">有 10–20 人包厢和大桌，午饭后继续逛老街最顺。</p>
+            <div class="restaurant-foot"><a class="restaurant-link" href="http://dpurl.cn/5IDJ2GTz" target="_blank" rel="noopener">美团看店</a></div>
+          </article>
+
+          <article class="restaurant-card is-alternative">
+            <div class="restaurant-meal"><span>周日午饭 · 青溪</span><span class="restaurant-tag">备选</span></div>
+            <div class="restaurant-top"><h4>聚味楼</h4></div>
+            <p class="restaurant-meta">距老街约 0.1 公里</p>
+            <p class="restaurant-note">老街边上更好衔接下午行程；按 7 人确认桌型。</p>
+            <div class="restaurant-foot"><a class="restaurant-link" href="http://dpurl.cn/WKnb9MBz" target="_blank" rel="noopener">美团看店</a></div>
+          </article>
+
+          <article class="restaurant-card is-alternative">
+            <div class="restaurant-meal"><span>周日午饭 · 青溪</span><span class="restaurant-tag">备选</span></div>
+            <div class="restaurant-top"><h4>财记小菜</h4></div>
+            <p class="restaurant-meta">青溪老街周边 · 本地小菜备选</p>
+            <p class="restaurant-note">前两家没位时的同片区替换，不跨片区绕路。</p>
+            <div class="restaurant-foot"><a class="restaurant-link" href="http://dpurl.cn/9zc0bcFz" target="_blank" rel="noopener">美团看店</a></div>
+          </article>
         </div>
 
         <div class="dining-note">
@@ -1083,6 +1343,37 @@
       });
     };
 
+    document.querySelectorAll('[data-track-controls]').forEach(controls => {
+      const track = document.getElementById(controls.dataset.trackControls);
+      if (!track) return;
+      const prev = controls.querySelector('[data-track-prev]');
+      const next = controls.querySelector('[data-track-next]');
+
+      const updateTrackButtons = () => {
+        const maxScroll = track.scrollWidth - track.clientWidth;
+        prev.disabled = track.scrollLeft <= 1;
+        next.disabled = track.scrollLeft >= maxScroll - 1;
+      };
+
+      const scrollTrack = direction => {
+        const card = track.querySelector('article');
+        if (!card) return;
+        const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+        track.scrollBy({ left: direction * (card.getBoundingClientRect().width + gap), behavior: 'smooth' });
+      };
+
+      prev.addEventListener('click', () => scrollTrack(-1));
+      next.addEventListener('click', () => scrollTrack(1));
+      track.addEventListener('scroll', updateTrackButtons, { passive: true });
+      track.addEventListener('keydown', event => {
+        if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+        event.preventDefault();
+        scrollTrack(event.key === 'ArrowLeft' ? -1 : 1);
+      });
+      window.addEventListener('resize', updateTrackButtons);
+      updateTrackButtons();
+    });
+
     const carousel = document.querySelector('.carousel');
     if (carousel) {
       const slides = [...carousel.querySelectorAll('.carousel-slide')];
@@ -1111,6 +1402,13 @@
 
     document.querySelectorAll('img').forEach(img => {
       img.addEventListener('error', () => {
+        const playVisual = img.closest('.play-visual');
+        if (playVisual) {
+          const label = playVisual.querySelector('.play-visual-label')?.outerHTML || '';
+          playVisual.classList.add('play-visual--fallback');
+          playVisual.innerHTML = `${img.alt}${label}`;
+          return;
+        }
         const slide = img.closest('.carousel-slide');
         if (!slide) return;
         slide.textContent = img.alt;
