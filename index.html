@@ -93,11 +93,11 @@
       text-decoration: none;
     }
 
-    .hero { padding: 38px 0 28px; }
+    .hero { padding: 32px 0 24px; }
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 350px;
-      gap: 28px;
+      grid-template-columns: minmax(0, 1fr) 320px;
+      gap: 24px;
       align-items: stretch;
     }
     .date {
@@ -109,7 +109,7 @@
     h1 {
       margin: 0;
       color: var(--green-deep);
-      font-size: 38px;
+      font-size: 34px;
       line-height: 1.16;
       letter-spacing: 0;
     }
@@ -123,11 +123,11 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 10px;
-      margin-top: 22px;
+      margin-top: 18px;
     }
     .key-item {
-      min-height: 82px;
-      padding: 13px 14px;
+      min-height: 70px;
+      padding: 11px 13px;
       border: 1px solid var(--line);
       border-radius: 8px;
       background: var(--white);
@@ -149,7 +149,7 @@
     .carousel {
       position: relative;
       height: 100%;
-      min-height: 290px;
+      min-height: 260px;
       overflow: hidden;
       border: 1px solid var(--line);
       border-radius: 8px;
@@ -221,42 +221,8 @@
     }
     .carousel-dots button.active { background: #fff; }
 
-    .mainline { padding: 0 0 30px; }
-    .mainline-card {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--line);
-      box-shadow: var(--shadow);
-    }
-    .mainline-day {
-      padding: 18px 20px;
-      background: var(--white);
-    }
-    .mainline-day small {
-      display: block;
-      color: var(--muted);
-      font-size: 11px;
-      font-weight: 900;
-    }
-    .mainline-day strong {
-      display: block;
-      margin-top: 6px;
-      color: var(--green-deep);
-      font-size: 19px;
-      line-height: 1.45;
-    }
-    .mainline-day p {
-      margin: 7px 0 0;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
     .section {
-      padding: 34px 0;
+      padding: 28px 0;
       border-top: 1px solid var(--line);
     }
     .section-head {
@@ -264,12 +230,12 @@
       align-items: flex-end;
       justify-content: space-between;
       gap: 24px;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
     .section h2 {
       margin: 0;
       color: var(--green-deep);
-      font-size: 27px;
+      font-size: 25px;
       line-height: 1.25;
     }
     .section-head p {
@@ -319,7 +285,7 @@
       display: grid;
       grid-template-columns: 96px 1fr;
       gap: 14px;
-      padding: 13px 0;
+      padding: 10px 0;
       border-top: 1px solid var(--line);
     }
     .timeline-item:first-of-type { border-top: 0; padding-top: 4px; }
@@ -400,8 +366,10 @@
 
     .route-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      width: min(900px, 100%);
+      margin: 0 auto;
     }
     .route-card {
       overflow: hidden;
@@ -414,7 +382,7 @@
       align-items: flex-start;
       justify-content: space-between;
       gap: 14px;
-      padding: 14px 16px 10px;
+      padding: 12px 14px 9px;
     }
     .route-head strong {
       display: block;
@@ -441,15 +409,17 @@
     }
     .route-link:hover { background: var(--green-soft); text-decoration: none; }
     .route-visual {
-      margin: 0 16px;
+      margin: 0 14px 12px;
       overflow: hidden;
       border-radius: 8px;
       background: #edf4ec;
+      aspect-ratio: 1500 / 840;
     }
     .route-visual img {
       display: block;
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
     }
     .route-visual svg {
       display: block;
@@ -499,6 +469,16 @@
     .meal-options {
       display: grid;
       gap: 10px;
+    }
+    .meal-alternatives {
+      margin: 8px 2px 0;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.7;
+    }
+    .meal-alternatives a {
+      color: var(--green-deep);
+      font-weight: 900;
     }
     .restaurant-card {
       padding: 14px;
@@ -565,7 +545,7 @@
 
     .notes-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 12px;
       align-items: start;
     }
@@ -664,7 +644,7 @@
         <a href="#sunday">周日</a>
         <a href="#dining">吃哪家</a>
         <a href="#transport">交通</a>
-        <a href="#notes">行前备注</a>
+        <a href="#notes">备注</a>
       </nav>
     </div>
   </header>
@@ -675,7 +655,7 @@
         <div>
           <p class="date">2026.10.31 周六 — 11.01 周日</p>
           <h1>奉贤两日行程执行单</h1>
-          <p class="hero-copy">8 人两天一夜，住奉贤区奉城镇分水墩村“那田土灶乌篷船”。两顿早餐自己准备，三顿正餐都在外面吃；周日上午顺路去李窑村，再收尾青溪老街。</p>
+          <p class="hero-copy">8 人两天一夜。周六去海湾森林公园，晚上回民宿自由活动；周日上午李窑村，下午青溪老街后返程。早餐自备，三顿正餐都在外面吃。</p>
           <div class="key-strip" aria-label="行程关键信息">
             <div class="key-item">
               <small>人数</small>
@@ -691,7 +671,7 @@
             </div>
             <div class="key-item">
               <small>周日用车</small>
-              <strong>一台车 + 网约车 · 5+2</strong>
+              <strong>4 人坐车 + 3 人打车</strong>
             </div>
           </div>
         </div>
@@ -725,26 +705,11 @@
       </div>
     </section>
 
-    <section class="mainline" aria-label="两天主线">
-      <div class="wrap mainline-card">
-        <article class="mainline-day">
-          <small>周六主线</small>
-          <strong>自制早餐 → 09:30 出发 → 海湾午饭 → 森林公园 → 奉贤晚饭 → 民宿自由局</strong>
-          <p>不赶 9 点到景区，不顺拐去渔人码头。晚饭后顺路买好次日早餐。</p>
-        </article>
-        <article class="mainline-day">
-          <small>周日主线</small>
-          <strong>自制早餐 → 李窑村稻田 → 青溪午饭 → 老街与下午茶 → 16:30 左右返程</strong>
-          <p>一人早上带好便携早餐先开车返沪，剩 7 人按 5 人坐车、2 人打车执行。</p>
-        </article>
-      </div>
-    </section>
-
     <section class="section" id="saturday">
       <div class="wrap">
         <div class="section-head">
-          <h2>周六 · 午饭顺路，下午森林，晚上民宿</h2>
-          <p>不再安排渔人码头：它离森林公园约 21.2 公里，时间和路线都不划算。</p>
+          <h2>周六 · 海湾森林 + 民宿夜</h2>
+          <p>09:30 出发，午饭在公园周边；晚饭后采购早餐，再回民宿。</p>
         </div>
 
         <div class="day-layout">
@@ -756,58 +721,44 @@
             <div class="timeline-item">
               <div class="time">08:30–09:20</div>
               <div class="timeline-content">
-                <h4>周六早餐自己准备</h4>
-                <p>各自在家吃好再出发；带面包、水果和饮用水，路上需要时再补。早餐不额外占路上时间。</p>
+                <h4>早餐、出门</h4>
+                <p>各自在家吃好再出发，带水和少量水果，不为早餐加点位。</p>
               </div>
             </div>
             <div class="timeline-item">
               <div class="time">09:30</div>
               <div class="timeline-content">
-                <h4>市区出发，不赶早</h4>
-                <p>两台车按实时导航走，路上留出休息和买水时间。9 点到景区不作为目标。</p>
+                <h4>市区出发</h4>
+                <p>两台五座车跟同一实时导航，路上按需休息。</p>
                 <span class="route-chip">8 人 = 4 人 + 4 人</span>
               </div>
             </div>
             <div class="timeline-item">
-              <div class="time">11:30–12:45</div>
+              <div class="time">11:30–13:00</div>
               <div class="timeline-content">
-                <h4>海湾农家菜午饭</h4>
-                <p>五四公路 1202 号，营业 10:00–20:30，人均约 83 元。默认订 8 人桌；没位就换海湾觅味或开心小筑。</p>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="time">12:45–13:00</div>
-              <div class="timeline-content">
-                <h4>开车去森林公园 1 号门</h4>
-                <p>约 4.9 公里、15 分钟。森林公园 08:30–16:30 开放，15:30 停止入园。</p>
+                <h4>午饭，去森林公园 1 号门</h4>
+                <p>海湾片区吃饭，饭后约 4.9 公里、15 分钟到公园；15:30 停止入园。</p>
               </div>
             </div>
             <div class="timeline-item">
               <div class="time">13:00–16:00</div>
               <div class="timeline-content">
-                <h4>水杉林、百鸟湖慢逛</h4>
-                <p>只玩核心一段，坐船或观光车按现场情况选一个。16 点左右出园，不赶最后一分钟。</p>
+                <h4>水杉林、百鸟湖</h4>
+                <p>只走核心一段，坐船或观光车二选一，16:00 左右出园。</p>
               </div>
             </div>
             <div class="timeline-item">
-              <div class="time">16:15–16:35</div>
-              <div class="timeline-content">
-                <h4>去小木屋花园度假村</h4>
-                <p>约 4.9 公里、15–20 分钟。导航搜“上海小木屋花园度假村”。</p>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="time">16:35–18:20</div>
+              <div class="time">16:20–18:20</div>
               <div class="timeline-content">
                 <h4>奉贤晚饭</h4>
-                <p>默认在小木屋园内吃中餐，省去饭后折腾；想吃热锅就换地锅那年。晚饭始终在奉贤。</p>
+                <p>默认小木屋园内餐厅；想吃热锅就换地锅那年。晚饭不离开奉贤。</p>
               </div>
             </div>
             <div class="timeline-item">
               <div class="time">18:20–19:00</div>
               <div class="timeline-content">
-                <h4>顺路采购，再回民宿</h4>
-                <p>回民宿约 12.9 公里、23–30 分钟。途中找一家营业中的超市或便利店，买齐周日早餐再进村。</p>
+                <h4>采购早餐，回民宿</h4>
+                <p>途中找营业中的超市或便利店，回民宿约 12.9 公里、23–30 分钟。</p>
                 <span class="route-chip">采购 8 份次日早餐</span>
               </div>
             </div>
@@ -815,19 +766,20 @@
               <div class="time">19:00 起</div>
               <div class="timeline-content">
                 <h4>民宿自由局</h4>
-                <p>麻将、KTV、桌游按大家状态选一个主项目，不三项都硬开。</p>
+                <p>麻将、KTV、桌游按大家状态选一个主项目，不再安排夜驾。</p>
               </div>
             </div>
           </article>
 
           <aside class="side-card" aria-label="周六晚间准备">
-            <h3>晚饭后顺手办两件事</h3>
-            <p>不再开夜车。先把早餐放好，再安心打牌、唱歌或玩桌游。</p>
+            <h3>今晚只办三件事</h3>
+            <p>把早餐放好、娱乐项目选好，然后安心玩。</p>
             <div class="mini-list">
-              <div class="mini-item">分装早餐<small>面包或饭团、牛奶或豆浆、鸡蛋、水果、饮用水；早走 1 人先拿便携份</small></div>
-              <div class="mini-item">民宿自由局<small>麻将、KTV、桌游按大家状态选一个主项目，不临时跑夜路</small></div>
+              <div class="mini-item">分装 8 份次日早餐<small>早走 1 人先拿好便携份</small></div>
+              <div class="mini-item">选一个主娱乐<small>麻将、KTV、桌游不全部硬开</small></div>
+              <div class="mini-item">不开夜车<small>下一次挪车就是周日退房</small></div>
             </div>
-            <div class="warning-card">三顿正餐全部外食；民宿只准备和分装周日早餐，不生火做正餐。</div>
+            <div class="warning-card">三顿正餐全部外食；民宿只分装早餐，不生火做正餐。</div>
           </aside>
         </div>
       </div>
@@ -836,8 +788,8 @@
     <section class="section" id="sunday">
       <div class="wrap">
         <div class="section-head">
-          <h2>周日 · 李窑村看稻田，青溪老街收尾</h2>
-          <p>李窑村与青溪老街同属青村镇，两地只隔约 815 米；先逛村，再吃午饭，顺路不折返。</p>
+          <h2>周日 · 李窑村 + 青溪老街</h2>
+          <p>一人早返，剩 7 人固定 4+3。李窑到青溪只有约 815 米，顺路不折返。</p>
         </div>
 
         <div class="day-layout">
@@ -850,78 +802,70 @@
               <div class="time">早上</div>
               <div class="timeline-content">
                 <h4>一人先开车返沪</h4>
-                <p>拿上前一晚分好的便携早餐再出发。大家不用统一早起，剩 7 人按自己的节奏收拾。</p>
+                <p>带上已分好的早餐先走，其余 7 人不用统一早起。</p>
               </div>
             </div>
             <div class="timeline-item">
               <div class="time">08:30–10:15</div>
               <div class="timeline-content">
-                <h4>自制早餐，再在民宿和村内慢逛</h4>
-                <p>吃前一晚买好的面包或饭团、牛奶或豆浆、鸡蛋和水果；不借用厨房做正餐，也不专门赶点位。</p>
+                <h4>自制早餐，慢慢收拾</h4>
+                <p>吃前一晚买好的早餐，不借用厨房做正餐，也不专门赶点位。</p>
               </div>
             </div>
             <div class="timeline-item">
               <div class="time">10:15–10:55</div>
               <div class="timeline-content">
                 <h4>退房，去李窑村 P1 停车场</h4>
-                <p>约 12.9 公里、25–30 分钟。先退房，行李随身带走；2 人打车跟同一导航走。</p>
-                <span class="route-chip">7 人 = 5 人坐车 + 2 人打车</span>
+                <p>约 12.9 公里、25–30 分钟。行李随身带走，两路同时出发。</p>
+                <span class="route-chip">4 人坐车 + 3 人打车</span>
               </div>
             </div>
             <div class="timeline-item">
               <div class="time">11:00–12:15</div>
               <div class="timeline-content">
                 <h4>李窑村稻田和村咖慢逛</h4>
-                <p>停 P1 后沿稻田、村巷和村咖走一小圈，免费开放。想加窑烤面包或米糕手作就提前预约；小雨时皮划艇和小火车通常停运，不临时硬排。</p>
+                <p>停 P1 后逛稻田、村巷和村咖。手作提前约；雨天不排皮划艇和小火车。</p>
               </div>
             </div>
             <div class="timeline-item">
               <div class="time">12:15–12:25</div>
               <div class="timeline-content">
                 <h4>转场青溪古镇 P2</h4>
-                <p>仅约 815 米、5 分钟。五座车带 5 人过去，另外 2 人继续叫车，不合并挤车。</p>
+                <p>仅约 815 米、5 分钟。保持同一编队，不换人、不挤车。</p>
               </div>
             </div>
             <div class="timeline-item">
               <div class="time">12:25–13:50</div>
               <div class="timeline-content">
-                <h4>屋里厢饭店午饭</h4>
-                <p>距老街约 0.2 公里，7 人优先订包厢或大桌。没位就换聚味楼或财记小菜。</p>
+                <h4>青溪午饭</h4>
+                <p>屋里厢优先，7 人订大桌或包厢；没位换同组备选。</p>
               </div>
             </div>
             <div class="timeline-item">
-              <div class="time">13:50–15:20</div>
+              <div class="time">13:50–16:20</div>
               <div class="timeline-content">
-                <h4>老街慢逛或坐摇橹船</h4>
-                <p>看古桥、河巷和吊脚楼；想体验就坐一程。雨天青石板滑，慢慢走，不急着拍照。</p>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="time">15:20–16:20</div>
-              <div class="timeline-content">
-                <h4>一尺花园（南园店）下午茶</h4>
-                <p>营业到 20:30，雨天也能坐着休息。吃完直接返程，不再返回民宿。</p>
+                <h4>青溪老街 + 一尺花园下午茶</h4>
+                <p>看古桥、河巷；雨天路滑慢走。下午茶后直接返程，不再回民宿。</p>
               </div>
             </div>
             <div class="timeline-item">
               <div class="time">16:30</div>
               <div class="timeline-content">
                 <h4>从青溪直接回家</h4>
-                <p>5 人坐留下的五座车，2 人从青溪叫车回家；不再返回民宿，也不超员。</p>
+                <p>坐车组和打车组各自直接返程，中途不汇合、不超员。</p>
               </div>
             </div>
           </article>
 
           <aside class="side-card" aria-label="周日交通">
             <h3>周日 7 人怎么走</h3>
-            <p>一人先开一台车返沪后，只剩一台五座车。去李窑村和转场青溪都按 5+2 走。</p>
+            <p>从民宿到李窑、李窑到青溪，全程固定编队，不中途换人。</p>
             <div class="mini-list">
-              <div class="mini-item">5 人坐留下的五座车（含驾驶员）</div>
-              <div class="mini-item">2 人叫网约车去李窑村 P1</div>
-              <div class="mini-item">转场青溪仅 815 米，2 人继续打车</div>
-              <div class="mini-item">返程时 2 人从青溪直接打车回家</div>
+              <div class="mini-item">4 人坐车<small>含驾驶员，行李随身</small></div>
+              <div class="mini-item">3 人打车提前 5 分钟叫车<small>四人座网约车即可</small></div>
+              <div class="mini-item">返程同样 4+3<small>从青溪直接回家，费用当场均摊</small></div>
             </div>
-            <div class="warning-card">五座车不能坐 7 人：核载含驾驶员，坐 7 人就是超员。</div>
+            <div class="warning-card">五座车核载含驾驶员：不临时塞人，不超员。</div>
           </aside>
         </div>
       </div>
@@ -930,8 +874,8 @@
     <section class="section" id="dining">
       <div class="wrap">
         <div class="section-head">
-          <h2>三顿正餐，按顺路程度选</h2>
-          <p>全部在外面吃。每组先看第一张首选；没座再换同组备选，不在饭点临时跨片区跑。</p>
+          <h2>三顿正餐，各留一个首选</h2>
+          <p>全部外食。首选没位再用同组备选，不在饭点跨片区跑。</p>
         </div>
 
         <div class="dining-grid">
@@ -946,29 +890,12 @@
                   <h4>海湾农家菜</h4>
                   <span class="restaurant-tag">路线默认</span>
                 </div>
-                <p class="restaurant-meta">美团 3.9 · 距公园约 4.2 公里 · 免费停车</p>
-                <p class="restaurant-note">有 8–10 人桌和包厢，当前导航和路线都按这家走。临时不换店最省沟通成本。</p>
+                <p class="restaurant-meta">美团 3.9 · 距 1 号门约 4.2 公里 · 免费停车</p>
+                <p class="restaurant-note">有 8–10 人桌和包厢，导航与路线都按这家走。</p>
                 <a class="restaurant-link" href="http://dpurl.cn/zSnH1eOz" target="_blank" rel="noopener">美团看店</a>
               </article>
-              <article class="restaurant-card">
-                <div class="restaurant-top">
-                  <h4>海湾觅味</h4>
-                  <span class="restaurant-tag">口碑升级</span>
-                </div>
-                <p class="restaurant-meta">美团 4.9 · 本帮江浙菜 · 人均约 98 元</p>
-                <p class="restaurant-note">有包厢和大桌，免费停车。想吃得更稳、更舒服就换这里，饭后去森林公园也顺。</p>
-                <a class="restaurant-link" href="http://dpurl.cn/EEGCvM9z" target="_blank" rel="noopener">美团看店</a>
-              </article>
-              <article class="restaurant-card">
-                <div class="restaurant-top">
-                  <h4>开心小筑农家菜</h4>
-                  <span class="restaurant-tag">离公园最近</span>
-                </div>
-                <p class="restaurant-meta">五四公路店 · 距公园约 1.2 公里</p>
-                <p class="restaurant-note">农家菜、包厢和停车都方便。适合想把午饭到入园这段路压到最短的走法。</p>
-                <a class="restaurant-link" href="http://dpurl.cn/Sm0iznaz" target="_blank" rel="noopener">美团看店</a>
-              </article>
             </div>
+            <p class="meal-alternatives">备选：<a href="http://dpurl.cn/EEGCvM9z" target="_blank" rel="noopener">海湾觅味</a>（4.9） · <a href="http://dpurl.cn/Sm0iznaz" target="_blank" rel="noopener">开心小筑</a>（距 1 号门约 1.2 公里）</p>
           </section>
 
           <section class="meal-group" aria-labelledby="dinner-sat">
@@ -983,27 +910,10 @@
                   <span class="restaurant-tag">省事首选</span>
                 </div>
                 <p class="restaurant-meta">森林公园周边 · 饭后回民宿约 12.9 公里</p>
-                <p class="restaurant-note">园内就有餐厅，下午玩累了直接吃，不用再挪车找店。适合带老人小孩或雨天少折腾。</p>
-              </article>
-              <article class="restaurant-card">
-                <div class="restaurant-top">
-                  <h4>地锅那年（洪庙店）</h4>
-                  <span class="restaurant-tag">回程顺路</span>
-                </div>
-                <p class="restaurant-meta">美团 4.4 · 本地鸡窝火锅 · 人均约 70 元</p>
-                <p class="restaurant-note">热乎一锅炖，适合 8 人围坐；有 10 人以下包厢、大桌和免费停车，离回民宿方向更顺。</p>
-                <a class="restaurant-link" href="http://dpurl.cn/TcAqcsUz" target="_blank" rel="noopener">美团看店</a>
-              </article>
-              <article class="restaurant-card">
-                <div class="restaurant-top">
-                  <h4>一品鲜海鲜农家菜</h4>
-                  <span class="restaurant-tag">想吃海鲜</span>
-                </div>
-                <p class="restaurant-meta">美团 4.8 · 海湾店 · 免费停车</p>
-                <p class="restaurant-note">有包厢和大桌，明厨亮灶。适合明确想吃海鲜的一桌人，但回民宿的顺路程度不如地锅那年。</p>
-                <a class="restaurant-link" href="http://dpurl.cn/bi2nohpz" target="_blank" rel="noopener">美团看店</a>
+                <p class="restaurant-note">园内直接吃，少挪一次车；适合雨天和玩累后省事。</p>
               </article>
             </div>
+            <p class="meal-alternatives">备选：<a href="http://dpurl.cn/TcAqcsUz" target="_blank" rel="noopener">地锅那年（洪庙店）</a>（4.4） · <a href="http://dpurl.cn/bi2nohpz" target="_blank" rel="noopener">一品鲜海鲜农家菜</a>（4.8）</p>
           </section>
 
           <section class="meal-group" aria-labelledby="lunch-sun">
@@ -1018,33 +928,16 @@
                   <span class="restaurant-tag">7 人首选</span>
                 </div>
                 <p class="restaurant-meta">距老街约 0.2 公里 · 本帮私房菜 · 人均约 80 元</p>
-                <p class="restaurant-note">复古院落环境，有 10–20 人包厢和大桌，7 人吃饭不挤。午饭后继续逛老街最顺。</p>
+                <p class="restaurant-note">有 10–20 人包厢和大桌，午饭后继续逛老街最顺。</p>
                 <a class="restaurant-link" href="http://dpurl.cn/5IDJ2GTz" target="_blank" rel="noopener">美团看店</a>
               </article>
-              <article class="restaurant-card">
-                <div class="restaurant-top">
-                  <h4>聚味楼小海鲜·农家菜</h4>
-                  <span class="restaurant-tag">离老街最近</span>
-                </div>
-                <p class="restaurant-meta">青村店 · 距老街约 0.1 公里 · 免费停车</p>
-                <p class="restaurant-note">本帮、江浙、小海鲜和农家菜都能点；有包厢、宴会厅和 8–10 人大桌，口味覆盖面最广。</p>
-                <a class="restaurant-link" href="http://dpurl.cn/WKnb9MBz" target="_blank" rel="noopener">美团看店</a>
-              </article>
-              <article class="restaurant-card">
-                <div class="restaurant-top">
-                  <h4>财记小菜</h4>
-                  <span class="restaurant-tag">经典本帮</span>
-                </div>
-                <p class="restaurant-meta">青村店 · 距老街约 0.2 公里</p>
-                <p class="restaurant-note">偏经典上海本帮味，有 10 人以下包厢。适合想吃扎实家常菜、预算也比较稳的一桌。</p>
-                <a class="restaurant-link" href="http://dpurl.cn/9zc0bcFz" target="_blank" rel="noopener">美团看店</a>
-              </article>
             </div>
+            <p class="meal-alternatives">备选：<a href="http://dpurl.cn/WKnb9MBz" target="_blank" rel="noopener">聚味楼</a>（距老街约 0.1 公里） · <a href="http://dpurl.cn/9zc0bcFz" target="_blank" rel="noopener">财记小菜</a></p>
           </section>
         </div>
 
         <div class="dining-note">
-          <strong>三十悦居核查结论：</strong>口碑和院子环境都不错，但两家店都不在本次“海湾森林公园 → 四团民宿 → 青溪老街”线上；青浦朱家角店离森林公园和民宿都是近百公里级，专程折返不划算。这次不排进去，以后单独去朱家角时再吃更合理。
+          <strong>三十悦居：</strong>环境和口碑不错，但门店不在这条线路上，本次不安排；以后去朱家角再吃。
           <a class="restaurant-link" href="http://dpurl.cn/bpCmc7dz" target="_blank" rel="noopener">美团看店</a>
         </div>
       </div>
@@ -1054,14 +947,14 @@
       <div class="wrap">
         <div class="section-head">
           <h2>关键交通路线</h2>
-          <p>路线图用高德驾车路线和静态地图生成；点开可看实时导航。</p>
+          <p>四段主路线，点“高德路线”可直接导航。</p>
         </div>
 
         <div class="route-grid" aria-label="关键驾车路线">
           <article class="route-card">
             <div class="route-head">
               <div>
-                <strong>午饭、晚饭同片区 ↔ 森林公园</strong>
+                <strong>海湾片区 ↔ 森林公园</strong>
                 <small>单程 4.9 公里 · 约 16 分钟</small>
               </div>
               <a class="route-link" href="https://uri.amap.com/navigation?from=121.734153,30.865972,海湾农家菜&amp;to=121.690609,30.861518,上海海湾国家森林公园&amp;mode=car&amp;policy=1&amp;src=trip-final-page&amp;coordinate=gaode&amp;callnative=0" target="_blank" rel="noopener">高德路线</a>
@@ -1069,7 +962,6 @@
             <div class="route-visual">
               <img src="./trip-final-assets/route-lunch-to-forest.png" alt="高德实际路线：海湾农家菜到上海海湾国家森林公园，晚饭点在同片区">
             </div>
-            <p class="route-roads"><b>说明：</b>海湾农家菜与小木屋花园度假村仅隔几十米，去程和返程基本是同一条路，因此合并展示。</p>
           </article>
 
           <article class="route-card">
@@ -1083,7 +975,6 @@
             <div class="route-visual">
               <img src="./trip-final-assets/route-dinner-to-homestay.png" alt="高德实际路线：小木屋花园度假村到那田土灶乌篷船">
             </div>
-            <p class="route-roads"><b>主要路段：</b>五四公路 → 随塘河路 → 瓦洪公路 → 柴联路。</p>
           </article>
 
           <article class="route-card">
@@ -1097,7 +988,6 @@
             <div class="route-visual">
               <img src="./trip-final-assets/route-homestay-to-liyao.png" alt="高德实际路线：那田土灶乌篷船到李窑村 P1 停车场">
             </div>
-            <p class="route-roads"><b>主要路段：</b>团青公路 → 航塘公路 → 南奉公路 → 光大路 → 上塑路。</p>
           </article>
 
           <article class="route-card">
@@ -1111,7 +1001,6 @@
             <div class="route-visual">
               <img src="./trip-final-assets/route-liyao-to-qingxi.png" alt="高德实际路线：李窑村 P1 停车场到青溪古镇 P2 停车场">
             </div>
-            <p class="route-roads"><b>主要路段：</b>上线路 → 青村南路 → 城乡东路 → 南奉公路。</p>
           </article>
         </div>
       </div>
@@ -1121,53 +1010,28 @@
       <div class="wrap">
         <div class="section-head">
           <h2>执行备注</h2>
-          <p>只保留会影响执行的备注；住宿已经全部确认，不再重复确认项。</p>
+          <p>只保留会影响执行的 3 件事。</p>
         </div>
 
         <div class="notes-grid">
           <details class="note-box" open>
-            <summary><span>正餐订座顺序</span><span>+</span></summary>
+            <summary><span>用车与集合</span><span>+</span></summary>
             <div class="note-content">
               <ul>
-                <li>周六两餐按 8 人订位，优先 8 人桌或包厢；周日午饭按 7 人订位。</li>
-                <li>周六午饭：默认海湾农家菜；没位换海湾觅味或开心小筑农家菜。</li>
-                <li>周六晚饭：默认小木屋园内餐厅；想吃热锅就换地锅那年（洪庙店）。</li>
-                <li>周日午饭：默认屋里厢饭店；没位换聚味楼小海鲜或财记小菜。</li>
-                <li>三顿正餐全部外食，餐厅评分和营业状态出发前再以美团实时页为准。</li>
+                <li>周六两台五座车按 4+4，跟同一实时导航。</li>
+                <li>周日固定 4 人坐车 + 3 人打车，两段路都不换人。</li>
+                <li>打车组提前 5 分钟叫车，返程费用 7 人当场均摊。</li>
               </ul>
             </div>
           </details>
 
           <details class="note-box" open>
-            <summary><span>两顿早餐</span><span>+</span></summary>
+            <summary><span>早餐与订座</span><span>+</span></summary>
             <div class="note-content">
               <ul>
-                <li>周六早餐：各自在家吃好再出发，可带面包、水果和饮用水路上补。</li>
-                <li>周六晚饭后：回民宿途中采购 8 份周日早餐；早走 1 人先分好便携份。</li>
-                <li>周日早餐：面包或饭团、牛奶或豆浆、鸡蛋、水果和饮用水，不生火做正餐。</li>
-              </ul>
-            </div>
-          </details>
-
-          <details class="note-box" open>
-            <summary><span>李窑村周日执行</span><span>+</span></summary>
-            <div class="note-content">
-              <ul>
-                <li>导航到“李窑村 P1 停车场”，不要直接搜村名后停到狭窄村道。</li>
-                <li>核心只排稻田和村咖；窑烤面包、米糕等手作需提前联系商家确认成团与场次。</li>
-                <li>周日有小雨，稻田皮划艇和小火车大概率停运；以现场和商家通知为准，不把它们设为必玩项。</li>
-                <li>李窑村免费开放；逛完开车 5 分钟去青溪 P2，午饭仍只按 7 人订一家。</li>
-              </ul>
-            </div>
-          </details>
-
-          <details class="note-box" open>
-            <summary><span>人数与用车</span><span>+</span></summary>
-            <div class="note-content">
-              <ul>
-                <li>本次共 8 人，住宿已按 8 人安排好，现场分房不影响白天行程。</li>
-                <li>周六两台五座车按 4+4 执行，两车跟同一实时导航。</li>
-                <li>周日 1 人开一台车早返，剩 7 人按 5+2 执行：5 人坐留下的五座车，2 人坐网约车。</li>
+                <li>周六晚饭后采购 8 份周日早餐，早走 1 人先拿便携份。</li>
+                <li>周六两餐按 8 人订位，周日午饭按 7 人订大桌或包厢。</li>
+                <li>民宿只分装早餐，不生火做正餐。</li>
               </ul>
             </div>
           </details>
@@ -1176,20 +1040,9 @@
             <summary><span>天气和导航</span><span>+</span></summary>
             <div class="note-content">
               <ul>
-                <li>周六多云，约 17–23℃；森林公园湖边和林间有风，带外套。</li>
-                <li>周日小雨，约 15–24℃；带伞，穿防滑平底鞋。</li>
-                <li>导航搜“青溪老街”或“青溪古镇 P2 停车场”，不要输成清溪古镇。</li>
-              </ul>
-            </div>
-          </details>
-
-          <details class="note-box">
-            <summary><span>已取消，不再加回来</span><span>+</span></summary>
-            <div class="note-content">
-              <ul>
-                <li>渔人码头：离森林公园约 21.2 公里，时间和路线都不划算。</li>
-                <li>滴水湖、烟花、博物馆：本次都不去。</li>
-                <li>民宿到滴水湖骑行：单程约 31.7 公里，不适合这次轻松行程。</li>
+                <li>周六多云 17–23℃，湖边有风，带外套。</li>
+                <li>周日小雨 15–24℃，带伞，穿防滑鞋。</li>
+                <li>导航搜“李窑村 P1”和“青溪古镇 P2”，不要输成清溪古镇。</li>
               </ul>
             </div>
           </details>
