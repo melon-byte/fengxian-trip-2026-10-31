@@ -1,0 +1,1009 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="2026年10月31日至11月1日，7人奉贤两天一夜执行单：顺路午饭、海湾森林、奉贤晚饭、民宿自由局、青溪老街。">
+  <title>奉贤两日 · 7人行程执行单</title>
+  <style>
+    :root {
+      --paper: #f6f4ee;
+      --white: #ffffff;
+      --ink: #22322b;
+      --muted: #6e7a72;
+      --green: #2f654c;
+      --green-deep: #1d4635;
+      --green-soft: #e6f0e7;
+      --gold: #ad762c;
+      --gold-soft: #f4ead8;
+      --rust: #9d574d;
+      --rust-soft: #f7e8e4;
+      --line: #dfe3da;
+      --shadow: 0 10px 28px rgba(32, 57, 44, .07);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", system-ui, sans-serif;
+      line-height: 1.65;
+    }
+    a { color: var(--green); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 4px; }
+    img { display: block; max-width: 100%; }
+    button { font: inherit; }
+    .page { min-width: 320px; overflow-x: hidden; }
+    .wrap { width: min(1120px, calc(100% - 48px)); margin: 0 auto; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(246, 244, 238, .95);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+    .topbar-inner {
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--green-deep);
+      font-size: 15px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: var(--green);
+      color: #fff;
+      font-size: 16px;
+    }
+    .nav {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .nav::-webkit-scrollbar { display: none; }
+    .nav a {
+      flex: 0 0 auto;
+      padding: 7px 11px;
+      border-radius: 6px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .nav a:hover, .nav a.active {
+      background: var(--green-soft);
+      color: var(--green-deep);
+      text-decoration: none;
+    }
+
+    .hero { padding: 38px 0 28px; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 350px;
+      gap: 28px;
+      align-items: stretch;
+    }
+    .date {
+      margin: 0 0 8px;
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 900;
+    }
+    h1 {
+      margin: 0;
+      color: var(--green-deep);
+      font-size: 38px;
+      line-height: 1.16;
+      letter-spacing: 0;
+    }
+    .hero-copy {
+      max-width: 700px;
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .key-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 22px;
+    }
+    .key-item {
+      min-height: 82px;
+      padding: 13px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+    }
+    .key-item small {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+    }
+    .key-item strong {
+      display: block;
+      margin-top: 4px;
+      color: var(--green-deep);
+      font-size: 15px;
+      line-height: 1.4;
+    }
+
+    .carousel {
+      position: relative;
+      height: 100%;
+      min-height: 290px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--green-soft);
+    }
+    .carousel-slide {
+      display: none;
+      position: absolute;
+      inset: 0;
+      margin: 0;
+      background: var(--green-soft);
+    }
+    .carousel-slide.active { display: block; }
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .carousel-slide figcaption {
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      max-width: calc(100% - 20px);
+      padding: 4px 8px;
+      border-radius: 5px;
+      background: rgba(29, 70, 53, .86);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+    }
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      z-index: 2;
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border: 0;
+      border-radius: 6px;
+      background: rgba(29, 70, 53, .78);
+      color: #fff;
+      font-size: 24px;
+      line-height: 1;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+    .carousel-btn:hover { background: var(--green-deep); }
+    .carousel-btn.prev { left: 10px; }
+    .carousel-btn.next { right: 10px; }
+    .carousel-dots {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 12px;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      gap: 7px;
+    }
+    .carousel-dots button {
+      width: 8px;
+      height: 8px;
+      padding: 0;
+      border: 1px solid rgba(255,255,255,.9);
+      border-radius: 50%;
+      background: rgba(255,255,255,.35);
+      cursor: pointer;
+    }
+    .carousel-dots button.active { background: #fff; }
+
+    .mainline { padding: 0 0 30px; }
+    .mainline-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--line);
+      box-shadow: var(--shadow);
+    }
+    .mainline-day {
+      padding: 18px 20px;
+      background: var(--white);
+    }
+    .mainline-day small {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+    }
+    .mainline-day strong {
+      display: block;
+      margin-top: 6px;
+      color: var(--green-deep);
+      font-size: 19px;
+      line-height: 1.45;
+    }
+    .mainline-day p {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .section {
+      padding: 34px 0;
+      border-top: 1px solid var(--line);
+    }
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 18px;
+    }
+    .section h2 {
+      margin: 0;
+      color: var(--green-deep);
+      font-size: 27px;
+      line-height: 1.25;
+    }
+    .section-head p {
+      max-width: 520px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .day-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 330px;
+      gap: 16px;
+      align-items: start;
+    }
+    .timeline-card, .side-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+    .timeline-card { padding: 20px; }
+    .timeline-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+    .timeline-title h3 {
+      margin: 0;
+      color: var(--green-deep);
+      font-size: 21px;
+      line-height: 1.35;
+    }
+    .weather {
+      flex: 0 0 auto;
+      padding: 4px 8px;
+      border-radius: 5px;
+      background: var(--gold-soft);
+      color: #79581f;
+      font-size: 11px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 14px;
+      padding: 13px 0;
+      border-top: 1px solid var(--line);
+    }
+    .timeline-item:first-of-type { border-top: 0; padding-top: 4px; }
+    .time {
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 900;
+      line-height: 1.5;
+    }
+    .timeline-content h4 {
+      margin: 0;
+      color: var(--green-deep);
+      font-size: 15px;
+      line-height: 1.45;
+    }
+    .timeline-content p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .route-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 7px;
+      padding: 3px 7px;
+      border-radius: 5px;
+      background: var(--green-soft);
+      color: var(--green-deep);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .side-card {
+      padding: 18px;
+      position: sticky;
+      top: 82px;
+    }
+    .side-card h3 {
+      margin: 0 0 10px;
+      color: var(--green-deep);
+      font-size: 19px;
+    }
+    .side-card p {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .mini-list {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .mini-item {
+      padding: 10px 11px;
+      border-radius: 7px;
+      background: #f3f6ef;
+      color: var(--green-deep);
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .mini-item small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 400;
+    }
+    .warning-card {
+      margin-top: 12px;
+      padding: 11px 12px;
+      border-radius: 7px;
+      background: var(--rust-soft);
+      color: var(--rust);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .route-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .route-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+    }
+    .route-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px 16px 10px;
+    }
+    .route-head strong {
+      display: block;
+      color: var(--green-deep);
+      font-size: 15px;
+      line-height: 1.45;
+    }
+    .route-head small {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+    }
+    .route-link {
+      flex: 0 0 auto;
+      padding: 5px 9px;
+      border: 1px solid #cbd9c8;
+      border-radius: 6px;
+      color: var(--green-deep);
+      font-size: 11px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+    .route-link:hover { background: var(--green-soft); text-decoration: none; }
+    .route-visual {
+      margin: 0 16px;
+      overflow: hidden;
+      border-radius: 8px;
+      background: #edf4ec;
+    }
+    .route-visual img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .route-visual svg {
+      display: block;
+      width: 100%;
+      height: 108px;
+    }
+    .route-visual text {
+      fill: var(--green-deep);
+      font-size: 11px;
+      font-weight: 900;
+    }
+    .route-shadow { fill: none; stroke: #fff; stroke-width: 10; stroke-linecap: round; opacity: .8; }
+    .route-road { fill: none; stroke: var(--green); stroke-width: 5; stroke-linecap: round; }
+    .route-stop { fill: #fff; stroke: var(--green-deep); stroke-width: 3; }
+    .route-roads {
+      padding: 9px 16px 13px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+    .route-roads b { color: var(--green-deep); }
+
+    .notes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+    details.note-box {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+    }
+    details.note-box summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 15px 17px;
+      cursor: pointer;
+      color: var(--green-deep);
+      font-size: 15px;
+      font-weight: 900;
+      list-style: none;
+    }
+    details.note-box summary::-webkit-details-marker { display: none; }
+    details.note-box summary span:last-child {
+      width: 24px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      border-radius: 5px;
+      background: var(--green-soft);
+      font-size: 17px;
+      transition: transform .2s;
+    }
+    details.note-box[open] summary span:last-child { transform: rotate(45deg); }
+    .note-content {
+      padding: 0 17px 16px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .note-content ul { margin: 0; padding-left: 18px; }
+    .note-content li { margin: 7px 0; }
+
+    footer {
+      padding: 25px 0 36px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+    }
+    footer strong { color: var(--green-deep); }
+
+    @media (max-width: 920px) {
+      .hero-grid, .mainline-card, .day-layout, .route-grid, .notes-grid { grid-template-columns: 1fr; }
+      .side-card { position: static; }
+      .key-strip { grid-template-columns: repeat(2, 1fr); }
+      .section-head { align-items: flex-start; flex-direction: column; gap: 8px; }
+    }
+
+    @media (max-width: 620px) {
+      .wrap { width: calc(100% - 32px); }
+      .topbar-inner { min-height: 56px; gap: 12px; }
+      .brand span:last-child { display: none; }
+      .nav a { padding: 7px 9px; font-size: 12px; }
+      .hero { padding-top: 28px; }
+      h1 { font-size: 30px; }
+      .hero-copy { font-size: 14px; }
+      .key-strip { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .key-item { min-height: 0; padding: 11px 12px; }
+      .carousel { min-height: 220px; }
+      .section { padding: 28px 0; }
+      .section h2 { font-size: 23px; }
+      .timeline-card, .side-card { padding: 15px; }
+      .timeline-item { grid-template-columns: 78px 1fr; gap: 10px; }
+      .time { font-size: 12px; }
+      .route-visual svg { height: 96px; }
+    }
+
+    @media print {
+      .topbar { display: none; }
+      body { background: #fff; }
+      .timeline-card, .side-card, .route-card, .note-box, .key-item { box-shadow: none; break-inside: avoid; }
+      .section { padding: 18px 0; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#top" aria-label="回到顶部">
+        <span class="brand-mark">贤</span>
+        <span>奉贤两日 · 行程执行单</span>
+      </a>
+      <nav class="nav" aria-label="页面导航">
+        <a href="#overview">总览</a>
+        <a href="#saturday">周六</a>
+        <a href="#sunday">周日</a>
+        <a href="#transport">交通</a>
+        <a href="#notes">行前备注</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" id="overview">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="date">2026.10.31 周六 — 11.01 周日</p>
+          <h1>奉贤两日行程执行单</h1>
+          <p class="hero-copy">7 人两天一夜，住奉贤区奉城镇分水墩村“那田土灶乌篷船”。原则只有三个：不赶早、不绕路、不超员。</p>
+          <div class="key-strip" aria-label="行程关键信息">
+            <div class="key-item">
+              <small>人数</small>
+              <strong>7 人</strong>
+            </div>
+            <div class="key-item">
+              <small>住宿</small>
+              <strong>那田土灶乌篷船</strong>
+            </div>
+            <div class="key-item">
+              <small>周六用车</small>
+              <strong>两台五座车 · 4+3</strong>
+            </div>
+            <div class="key-item">
+              <small>周日用车</small>
+              <strong>一台车 + 网约车 · 4+2</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel" aria-label="目的地照片轮播">
+          <figure class="carousel-slide active">
+            <img src="https://dimg04.c-ctrip.com/images/0102h12000fathns65549_W_1080_0_Q80.jpg" alt="上海海湾国家森林公园" referrerpolicy="no-referrer">
+            <figcaption>海湾国家森林公园</figcaption>
+          </figure>
+          <figure class="carousel-slide">
+            <img src="https://aos-comment.amap.com/B0JDARBL1O/comment/content_media_external_file_6562_1768290132874_76866014.jpg" alt="海湾农家菜" referrerpolicy="no-referrer">
+            <figcaption>顺路午餐 · 海湾农家菜</figcaption>
+          </figure>
+          <figure class="carousel-slide">
+            <img src="https://aos-comment.amap.com/B0FFJWJC9Y/comment/content_media_external_images_media_1000226722_ss__1744222731162_42798914.jpg" alt="青溪老街" referrerpolicy="no-referrer">
+            <figcaption>青溪老街</figcaption>
+          </figure>
+          <button class="carousel-btn prev" type="button" aria-label="上一张">‹</button>
+          <button class="carousel-btn next" type="button" aria-label="下一张">›</button>
+          <div class="carousel-dots" aria-label="图片切换">
+            <button class="active" type="button" aria-label="第 1 张"></button>
+            <button type="button" aria-label="第 2 张"></button>
+            <button type="button" aria-label="第 3 张"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mainline" aria-label="两天主线">
+      <div class="wrap mainline-card">
+        <article class="mainline-day">
+          <small>周六主线</small>
+          <strong>09:30 出发 → 海湾农家菜 → 森林公园 → 奉贤晚饭 → 民宿自由局</strong>
+          <p>不赶 9 点到景区，不顺拐去渔人码头。晚上就在民宿玩麻将、KTV 或桌游。</p>
+        </article>
+        <article class="mainline-day">
+          <small>周日主线</small>
+          <strong>民宿慢逛 → 青溪老街午饭 → 下午茶 → 16 点左右直接返程</strong>
+          <p>一人早上先开车返沪，剩 6 人按 4 人开车、2 人打车执行。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="saturday">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>周六 · 午饭顺路，下午森林，晚上民宿</h2>
+          <p>不再安排渔人码头：它离森林公园约 21.2 公里，时间和路线都不划算。</p>
+        </div>
+
+        <div class="day-layout">
+          <article class="timeline-card">
+            <div class="timeline-title">
+              <h3>10 月 31 日</h3>
+              <span class="weather">多云 17–23℃</span>
+            </div>
+            <div class="timeline-item">
+              <div class="time">09:30</div>
+              <div class="timeline-content">
+                <h4>市区出发，不赶早</h4>
+                <p>两台车按实时导航走，路上留出休息和买水时间。9 点到景区不作为目标。</p>
+                <span class="route-chip">7 人 = 4 人 + 3 人</span>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="time">11:30–12:45</div>
+              <div class="timeline-content">
+                <h4>海湾农家菜午饭</h4>
+                <p>五四公路 1202 号，营业 10:00–20:30，人均约 83 元。先电话确认 7 人桌。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="time">12:45–13:00</div>
+              <div class="timeline-content">
+                <h4>开车去森林公园 1 号门</h4>
+                <p>约 4.9 公里、15 分钟。森林公园 08:30–16:30 开放，15:30 停止入园。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="time">13:00–16:00</div>
+              <div class="timeline-content">
+                <h4>水杉林、百鸟湖慢逛</h4>
+                <p>只玩核心一段，坐船或观光车按现场情况选一个。16 点左右出园，不赶最后一分钟。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="time">16:15–16:35</div>
+              <div class="timeline-content">
+                <h4>去小木屋花园度假村</h4>
+                <p>约 4.9 公里、15–20 分钟。导航搜“上海小木屋花园度假村”。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="time">16:35–18:20</div>
+              <div class="timeline-content">
+                <h4>奉贤晚饭</h4>
+                <p>小木屋内有中餐，提前确认当晚餐厅和 7 人桌。晚饭不离开奉贤。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="time">18:20–19:00</div>
+              <div class="timeline-content">
+                <h4>回那田土灶乌篷船</h4>
+                <p>约 12.9 公里、23–30 分钟。到民宿后办理入住、洗澡、休息，晚上不再外出。</p>
+              </div>
+            </div>
+            <div class="timeline-item" id="night">
+              <div class="time">19:00 起</div>
+              <div class="timeline-content">
+                <h4>民宿自由局</h4>
+                <p>麻将、KTV、桌游按大家状态选一个主项目，不三项都硬开。</p>
+              </div>
+            </div>
+          </article>
+
+          <aside class="side-card" aria-label="周六晚间准备">
+            <h3>今晚在民宿怎么玩</h3>
+            <p>晚饭后不再开夜车。设备和规则提前问清，别默认民宿一定有。</p>
+            <div class="mini-list">
+              <div class="mini-item">麻将<small>确认桌、牌、是否收费</small></div>
+              <div class="mini-item">KTV<small>确认设备、时段和音量规则</small></div>
+              <div class="mini-item">桌游<small>自带最稳，民宿有就是加分</small></div>
+            </div>
+            <div class="warning-card">要问民宿：停车、早餐、退房时间、公共空间能用多久、几点后需要安静。</div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sunday">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>周日 · 民宿慢醒，青溪老街收尾</h2>
+          <p>一人早上先开车返沪；剩 6 人不挤一台五座车，直接按 4+2 执行。</p>
+        </div>
+
+        <div class="day-layout">
+          <article class="timeline-card">
+            <div class="timeline-title">
+              <h3>11 月 1 日</h3>
+              <span class="weather">小雨 15–24℃</span>
+            </div>
+            <div class="timeline-item">
+              <div class="time">早上</div>
+              <div class="timeline-content">
+                <h4>一人先开车返沪</h4>
+                <p>大家不用统一早起。剩 6 人按自己的节奏吃早餐、收拾行李。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="time">08:30–10:15</div>
+              <div class="timeline-content">
+                <h4>民宿和村内慢慢逛</h4>
+                <p>吃早餐、喝茶、村内散步，具体路线问民宿老板；不专门赶点位。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="time">10:45</div>
+              <div class="timeline-content">
+                <h4>出发去青溪古镇 P2 停车场</h4>
+                <p>约 12.6 公里、25–30 分钟。先退房，行李随身带走。</p>
+                <span class="route-chip">6 人 = 4 人开车 + 2 人打车</span>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="time">11:15–12:00</div>
+              <div class="timeline-content">
+                <h4>老街先走一小段</h4>
+                <p>看古桥、河巷和吊脚楼。雨天青石板滑，慢慢走，不急着拍照。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="time">12:00–13:30</div>
+              <div class="timeline-content">
+                <h4>青溪老捌样午饭</h4>
+                <p>本帮菜方向，6 人提前确认座位。没位就换老街里的口碑小馆。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="time">13:30–15:00</div>
+              <div class="timeline-content">
+                <h4>饭后慢逛或坐摇橹船</h4>
+                <p>想体验就坐一程，不想坐就沿河走。青溪免费、不用预约，逛完即止。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="time">15:00–15:45</div>
+              <div class="timeline-content">
+                <h4>一尺花园（南园店）下午茶</h4>
+                <p>营业到 20:30，雨天也能坐着休息。16 点左右直接返程，不等夜景。</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="time">16:00</div>
+              <div class="timeline-content">
+                <h4>从青溪直接回家</h4>
+                <p>4 人开车，2 人从青溪叫车回家；不再返回民宿，也不超员。</p>
+              </div>
+            </div>
+          </article>
+
+          <aside class="side-card" aria-label="周日交通">
+            <h3>周日 6 人怎么走</h3>
+            <p>一人先开一台车返沪后，只剩一台五座车。五座车不能坐 6 人，不能都挤这台车。</p>
+            <div class="mini-list">
+              <div class="mini-item">4 人坐留下的五座车</div>
+              <div class="mini-item">2 人叫网约车去青溪</div>
+              <div class="mini-item">返程时 2 人从青溪直接打车回家</div>
+            </div>
+            <div class="warning-card">五座车不能坐 6 人：核载含驾驶员，坐 6 人就是超员。</div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="transport">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>关键交通路线</h2>
+          <p>路线图用高德驾车路线和静态地图生成；点开可看实时导航。</p>
+        </div>
+
+        <div class="route-grid" aria-label="关键驾车路线">
+          <article class="route-card">
+            <div class="route-head">
+              <div>
+                <strong>海湾农家菜 → 海湾森林公园</strong>
+                <small>4.9 公里 · 约 15–18 分钟</small>
+              </div>
+              <a class="route-link" href="https://uri.amap.com/navigation?from=121.734153,30.865972,海湾农家菜&amp;to=121.690609,30.861518,上海海湾国家森林公园&amp;mode=car&amp;policy=1&amp;src=trip-final-page&amp;coordinate=gaode&amp;callnative=0" target="_blank" rel="noopener">高德路线</a>
+            </div>
+            <div class="route-visual">
+              <img src="./trip-final-assets/route-lunch-to-forest.png" alt="高德实际路线：海湾农家菜到上海海湾国家森林公园">
+            </div>
+            <p class="route-roads"><b>主要路段：</b>五四公路 → 随塘河路 → 公园内部道路。</p>
+          </article>
+
+          <article class="route-card">
+            <div class="route-head">
+              <div>
+                <strong>森林公园 → 小木屋花园度假村</strong>
+                <small>4.9 公里 · 约 15–20 分钟</small>
+              </div>
+              <a class="route-link" href="https://uri.amap.com/navigation?from=121.690609,30.861518,上海海湾国家森林公园&amp;to=121.733309,30.867335,上海小木屋花园度假村&amp;mode=car&amp;policy=1&amp;src=trip-final-page&amp;coordinate=gaode&amp;callnative=0" target="_blank" rel="noopener">高德路线</a>
+            </div>
+            <div class="route-visual">
+              <img src="./trip-final-assets/route-forest-to-dinner.png" alt="高德实际路线：上海海湾国家森林公园到小木屋花园度假村">
+            </div>
+            <p class="route-roads"><b>主要路段：</b>公园内部道路 → 随塘河路 → 五四公路。</p>
+          </article>
+
+          <article class="route-card">
+            <div class="route-head">
+              <div>
+                <strong>小木屋 → 那田土灶乌篷船</strong>
+                <small>12.9 公里 · 约 23–30 分钟</small>
+              </div>
+              <a class="route-link" href="https://uri.amap.com/navigation?from=121.733309,30.867335,上海小木屋花园度假村&amp;to=121.672175,30.940725,那田土灶乌篷船&amp;mode=car&amp;policy=1&amp;src=trip-final-page&amp;coordinate=gaode&amp;callnative=0" target="_blank" rel="noopener">高德路线</a>
+            </div>
+            <div class="route-visual">
+              <img src="./trip-final-assets/route-dinner-to-homestay.png" alt="高德实际路线：小木屋花园度假村到那田土灶乌篷船">
+            </div>
+            <p class="route-roads"><b>主要路段：</b>五四公路 → 随塘河路 → 瓦洪公路 → 柴联路。</p>
+          </article>
+
+          <article class="route-card">
+            <div class="route-head">
+              <div>
+                <strong>民宿 → 青溪古镇 P2</strong>
+                <small>12.6 公里 · 约 23–30 分钟</small>
+              </div>
+              <a class="route-link" href="https://uri.amap.com/navigation?from=121.672175,30.940725,那田土灶乌篷船&amp;to=121.586270,30.924170,青溪古镇P2停车场&amp;mode=car&amp;policy=1&amp;src=trip-final-page&amp;coordinate=gaode&amp;callnative=0" target="_blank" rel="noopener">高德路线</a>
+            </div>
+            <div class="route-visual">
+              <img src="./trip-final-assets/route-homestay-to-qingxi.png" alt="高德实际路线：那田土灶乌篷船到青溪古镇 P2 停车场">
+            </div>
+            <p class="route-roads"><b>主要路段：</b>团青公路 → 航塘公路 → 南奉公路。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="notes">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>出发前要确认的事</h2>
+          <p>只保留会影响执行的备注；取消项收起来，不再占主行程。</p>
+        </div>
+
+        <div class="notes-grid">
+          <details class="note-box" open>
+            <summary><span>吃饭订座</span><span>+</span></summary>
+            <div class="note-content">
+              <ul>
+                <li>周六午饭：海湾农家菜，五四公路 1202 号，先问 7 人座位。</li>
+                <li>周六晚饭：上海小木屋花园度假村，确认当晚餐厅和 7 人桌。</li>
+                <li>周日午饭：青溪老捌样，先问 6 人座位；没位就换老街口碑小馆。</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="note-box" open>
+            <summary><span>民宿确认</span><span>+</span></summary>
+            <div class="note-content">
+              <ul>
+                <li>麻将桌、KTV 设备、桌游是否有，是否另收费。</li>
+                <li>晚上几点以后需要降低音量，公共空间能用多久。</li>
+                <li>两台车停车位置、周日早餐、退房时间。</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="note-box">
+            <summary><span>天气和导航</span><span>+</span></summary>
+            <div class="note-content">
+              <ul>
+                <li>周六多云，约 17–23℃；森林公园湖边和林间有风，带外套。</li>
+                <li>周日小雨，约 15–24℃；带伞，穿防滑平底鞋。</li>
+                <li>导航搜“青溪老街”或“青溪古镇 P2 停车场”，不要输成清溪古镇。</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="note-box">
+            <summary><span>已取消，不再加回来</span><span>+</span></summary>
+            <div class="note-content">
+              <ul>
+                <li>渔人码头：离森林公园约 21.2 公里，时间和路线都不划算。</li>
+                <li>滴水湖、烟花、博物馆：本次都不去。</li>
+                <li>民宿到滴水湖骑行：单程约 31.7 公里，不适合这次轻松行程。</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <strong>执行原则：</strong>这趟是放松，不是刷点。天气、排队或民宿安排有变化，就少逛一点，不临时加远路项目。
+    </div>
+  </footer>
+</div>
+
+<script>
+  (() => {
+    const links = [...document.querySelectorAll('.nav a')];
+    const sections = links
+      .map(link => document.querySelector(link.getAttribute('href')))
+      .filter(Boolean);
+
+    const updateActiveLink = () => {
+      let current = sections[0];
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top <= 120) current = section;
+      }
+      links.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === `#${current.id}`);
+      });
+    };
+
+    const carousel = document.querySelector('.carousel');
+    if (carousel) {
+      const slides = [...carousel.querySelectorAll('.carousel-slide')];
+      const dots = [...carousel.querySelectorAll('.carousel-dots button')];
+      let activeIndex = 0;
+      let timer = 0;
+
+      const showSlide = index => {
+        activeIndex = (index + slides.length) % slides.length;
+        slides.forEach((slide, i) => slide.classList.toggle('active', i === activeIndex));
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === activeIndex));
+      };
+      const restartTimer = () => {
+        window.clearInterval(timer);
+        timer = window.setInterval(() => showSlide(activeIndex + 1), 6000);
+      };
+
+      carousel.querySelector('.prev').addEventListener('click', () => { showSlide(activeIndex - 1); restartTimer(); });
+      carousel.querySelector('.next').addEventListener('click', () => { showSlide(activeIndex + 1); restartTimer(); });
+      dots.forEach((dot, i) => dot.addEventListener('click', () => { showSlide(i); restartTimer(); }));
+      carousel.addEventListener('mouseenter', () => window.clearInterval(timer));
+      carousel.addEventListener('mouseleave', restartTimer);
+      showSlide(0);
+      restartTimer();
+    }
+
+    document.querySelectorAll('img').forEach(img => {
+      img.addEventListener('error', () => {
+        const slide = img.closest('.carousel-slide');
+        if (!slide) return;
+        slide.textContent = img.alt;
+        slide.style.display = 'grid';
+        slide.style.placeItems = 'center';
+        slide.style.padding = '20px';
+        slide.style.color = '#2f654c';
+        slide.style.fontWeight = '900';
+      }, { once: true });
+    });
+
+    window.addEventListener('scroll', updateActiveLink, { passive: true });
+    updateActiveLink();
+  })();
+</script>
+</body>
+</html>
