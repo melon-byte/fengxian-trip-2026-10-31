@@ -367,11 +367,13 @@
     .route-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      width: min(900px, 100%);
+      gap: 12px;
+      width: min(860px, 100%);
       margin: 0 auto;
+      align-items: stretch;
     }
     .route-card {
+      min-width: 0;
       overflow: hidden;
       border: 1px solid var(--line);
       border-radius: 8px;
@@ -382,13 +384,13 @@
       align-items: flex-start;
       justify-content: space-between;
       gap: 14px;
-      padding: 12px 14px 9px;
+      padding: 11px 12px 8px;
     }
     .route-head strong {
       display: block;
       color: var(--green-deep);
-      font-size: 15px;
-      line-height: 1.45;
+      font-size: 14px;
+      line-height: 1.4;
     }
     .route-head small {
       display: block;
@@ -409,7 +411,7 @@
     }
     .route-link:hover { background: var(--green-soft); text-decoration: none; }
     .route-visual {
-      margin: 0 14px 12px;
+      margin: 0 10px 10px;
       overflow: hidden;
       border-radius: 8px;
       background: #edf4ec;
@@ -597,7 +599,7 @@
     footer strong { color: var(--green-deep); }
 
     @media (max-width: 920px) {
-      .hero-grid, .mainline-card, .day-layout, .route-grid, .dining-grid, .notes-grid { grid-template-columns: 1fr; }
+      .hero-grid, .mainline-card, .day-layout, .dining-grid, .notes-grid { grid-template-columns: 1fr; }
       .side-card { position: static; }
       .key-strip { grid-template-columns: repeat(2, 1fr); }
       .section-head { align-items: flex-start; flex-direction: column; gap: 8px; }
@@ -619,6 +621,12 @@
       .timeline-card, .side-card { padding: 15px; }
       .timeline-item { grid-template-columns: 78px 1fr; gap: 10px; }
       .time { font-size: 12px; }
+      .route-grid { gap: 8px; width: 100%; }
+      .route-head { display: block; padding: 9px 9px 7px; }
+      .route-head strong { font-size: 12px; line-height: 1.35; }
+      .route-head small { margin-top: 2px; font-size: 10px; line-height: 1.4; }
+      .route-link { display: inline-block; margin-top: 6px; padding: 3px 7px; font-size: 10px; }
+      .route-visual { margin: 0 8px 8px; }
       .route-visual svg { height: 96px; }
     }
 
