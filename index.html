@@ -272,7 +272,7 @@
 
     .day-layout {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 330px;
+      grid-template-columns: minmax(0, 1fr);
       gap: 16px;
       align-items: start;
     }
@@ -314,6 +314,7 @@
       border-top: 1px solid var(--line);
     }
     .timeline-item:first-of-type { border-top: 0; padding-top: 4px; }
+    .timeline-content { min-width: 0; }
     .time {
       color: var(--gold);
       font-size: 13px;
@@ -953,7 +954,8 @@
     footer strong { color: var(--green-deep); }
 
     @media (max-width: 920px) {
-      .hero-grid, .mainline-card, .day-layout, .notes-grid { grid-template-columns: 1fr; }
+      .hero-grid, .mainline-card, .notes-grid { grid-template-columns: 1fr; }
+      .day-layout { grid-template-columns: minmax(0, 1fr); }
       .side-card { position: static; }
       .key-strip { grid-template-columns: repeat(2, 1fr); }
       .section-head { align-items: flex-start; flex-direction: column; gap: 8px; }
@@ -1327,17 +1329,6 @@
               </div>
             </div>
           </article>
-
-          <aside class="side-card" aria-label="周六晚间准备">
-            <h3>今晚只办三件事</h3>
-            <p>把早餐放好、娱乐项目选好，然后安心玩。</p>
-            <div class="mini-list">
-              <div class="mini-item">分装 8 份次日早餐<small>早走 1 人先拿好便携份</small></div>
-              <div class="mini-item">选一个主娱乐<small>麻将、KTV、桌游不全部硬开</small></div>
-              <div class="mini-item">不开夜车<small>下一次挪车就是周日退房</small></div>
-            </div>
-            <div class="warning-card">三顿正餐全部外食；民宿只分装早餐，不生火做正餐。</div>
-          </aside>
         </div>
       </div>
     </section>
@@ -1464,17 +1455,6 @@
               </div>
             </div>
           </article>
-
-          <aside class="side-card" aria-label="周日交通">
-            <h3>周日 7 人怎么走</h3>
-            <p>从民宿到李窑、李窑到青溪，全程固定编队，不中途换人。</p>
-            <div class="mini-list">
-              <div class="mini-item">4 人坐车<small>含驾驶员，行李随身</small></div>
-              <div class="mini-item">3 人打车提前 5 分钟叫车<small>四人座网约车即可</small></div>
-              <div class="mini-item">返程同样 4+3<small>从青溪直接回家，费用当场均摊</small></div>
-            </div>
-            <div class="warning-card">五座车核载含驾驶员：不临时塞人，不超员。</div>
-          </aside>
         </div>
       </div>
     </section>
@@ -1656,7 +1636,14 @@
                   <label class="carry-item">
                     <input type="checkbox">
                     <span class="carry-check" aria-hidden="true"></span>
-                    <span class="carry-copy"><strong>天气装备</strong>薄外套或防风衣、雨伞、防滑鞋；湖边风大，周日有小雨。</span>
+                    <span class="carry-copy"><strong>换洗衣物</strong>每人一套换洗衣物、睡衣、内衣袜；再带薄外套或防风衣，湖边晚风偏凉。</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="carry-item">
+                    <input type="checkbox">
+                    <span class="carry-check" aria-hidden="true"></span>
+                    <span class="carry-copy"><strong>雨具与鞋</strong>折叠伞建议每人一把，另备轻便雨衣；穿防滑防水鞋，带一双备用袜子。</span>
                   </label>
                 </li>
                 <li>
