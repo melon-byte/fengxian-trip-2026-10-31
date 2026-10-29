@@ -487,83 +487,169 @@
       min-width: 0;
       scroll-snap-align: start;
     }
-    .restaurant-card {
-      min-height: 220px;
+    .meal-picks {
+      margin-top: 10px;
+      padding-top: 9px;
+      border-top: 1px dashed #d8ded4;
+    }
+    .meal-picks-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 7px;
+    }
+    .meal-picks-head strong {
+      color: var(--green-deep);
+      font-size: 11px;
+    }
+    .meal-controls {
+      display: flex;
+      flex: 0 0 auto;
+      gap: 4px;
+    }
+    .meal-arrow {
+      width: 26px;
+      height: 26px;
+      display: grid;
+      place-items: center;
+      padding: 0;
+      border: 1px solid #d3ddd0;
+      border-radius: 50%;
+      background: var(--white);
+      color: var(--green-deep);
+      cursor: pointer;
+    }
+    .meal-arrow:hover:not(:disabled) { background: var(--green-soft); }
+    .meal-arrow:disabled { opacity: .3; cursor: default; }
+    .meal-arrow svg { width: 13px; height: 13px; }
+    .meal-track {
+      display: flex;
+      gap: 10px;
+      align-items: stretch;
+      overflow-x: auto;
+      padding: 1px 1px 6px;
+      scroll-padding-inline: 1px;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      overscroll-behavior-x: contain;
+      -webkit-overflow-scrolling: touch;
+    }
+    .meal-track::-webkit-scrollbar { display: none; }
+    .meal-pick {
+      flex: 0 0 clamp(185px, calc((100% - 20px) / 3), 230px);
+      min-width: 0;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      padding: 15px;
+      scroll-snap-align: start;
       border: 1px solid var(--line);
       border-top: 3px solid var(--green);
       border-radius: 8px;
       background: var(--white);
-      box-shadow: var(--shadow);
     }
-    .restaurant-card.is-alternative { border-top-color: var(--gold); }
-    .restaurant-meal {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      margin-bottom: 10px;
+    .meal-pick.is-alternative { border-top-color: var(--gold); }
+    .meal-pick-visual {
+      position: relative;
+      height: 92px;
+      flex: 0 0 auto;
+      overflow: hidden;
+      background: var(--green-soft);
     }
-    .restaurant-meal > span:first-child {
-      color: var(--gold);
-      font-size: 11px;
+    .meal-pick-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .meal-pick-label {
+      position: absolute;
+      left: 7px;
+      bottom: 7px;
+      padding: 2px 5px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, .94);
+      color: var(--green-deep);
+      font-size: 9px;
       font-weight: 900;
     }
-    .restaurant-top {
+    .meal-pick-visual--fallback {
+      display: grid;
+      align-content: center;
+      gap: 2px;
+      padding: 12px;
+      background: linear-gradient(135deg, #f3f6ef, #e5eee2);
+    }
+    .meal-pick-visual--fallback strong {
+      color: var(--green-deep);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+    .meal-pick-visual--fallback small {
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 800;
+    }
+    .meal-pick-body {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 9px 10px 10px;
+    }
+    .meal-pick-top {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-      gap: 10px;
+      gap: 7px;
     }
-    .restaurant-top h4 {
+    .meal-pick h5 {
       margin: 0;
       color: var(--green-deep);
-      font-size: 17px;
-      line-height: 1.45;
+      font-size: 14px;
+      line-height: 1.4;
     }
-    .restaurant-tag {
+    .meal-pick-tag {
       flex: 0 0 auto;
-      padding: 2px 6px;
+      padding: 2px 5px;
       border-radius: 4px;
       background: var(--gold-soft);
       color: #79581f;
+      font-size: 9px;
+      font-weight: 900;
+    }
+    .meal-pick .meal-pick-meta {
+      margin: 5px 0 0;
+      color: var(--gold);
       font-size: 10px;
       font-weight: 900;
+      line-height: 1.45;
     }
-    .restaurant-meta {
-      margin: 7px 0 0;
-      color: var(--gold);
-      font-size: 11px;
-      font-weight: 900;
-    }
-    .restaurant-note {
-      flex: 1 0 auto;
-      margin: 7px 0 12px;
+    .meal-pick .meal-pick-note {
+      flex: 1;
+      margin: 5px 0 8px;
       color: var(--muted);
-      font-size: 12px;
-      line-height: 1.65;
+      font-size: 11px;
+      line-height: 1.55;
     }
-    .restaurant-foot { margin-top: auto; }
-    .restaurant-link {
+    .meal-pick-foot { margin-top: auto; }
+    .meal-link {
       display: inline-flex;
       align-items: center;
-      padding: 4px 8px;
+      padding: 3px 7px;
       border: 1px solid #cbd9c8;
       border-radius: 5px;
       color: var(--green-deep);
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 900;
     }
-    .restaurant-link:hover { background: var(--green-soft); text-decoration: none; }
-    .restaurant-text-action {
+    .meal-link:hover { background: var(--green-soft); text-decoration: none; }
+    .meal-text-action {
       display: inline-flex;
-      padding: 4px 0;
       color: var(--muted);
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 800;
     }
+    .supply-pick .meal-pick-visual { height: 84px; }
+    .supply-pick .meal-pick-meta { color: var(--rust); }
 
     .play-card {
       overflow: hidden;
@@ -673,23 +759,151 @@
       font-size: 10px;
       font-weight: 900;
     }
-    .dining-note {
-      margin-top: 14px;
-      padding: 14px 16px;
-      border: 1px solid #e8d7b8;
-      border-radius: 8px;
-      background: var(--gold-soft);
-      color: #69502a;
-      font-size: 12px;
-      line-height: 1.7;
-    }
-    .dining-note strong { color: var(--green-deep); }
-
     .notes-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 12px;
       align-items: start;
+    }
+    .carry-card {
+      grid-column: 1 / -1;
+      overflow: hidden;
+      border: 1px solid #cbd7c7;
+      border-top: 4px solid var(--gold);
+      border-radius: 8px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+    .carry-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 18px 20px 16px;
+      background: var(--green-deep);
+      color: var(--white);
+    }
+    .carry-heading { min-width: 0; }
+    .carry-kicker {
+      display: block;
+      margin-bottom: 3px;
+      color: #ead6a7;
+      font-size: 10px;
+      font-weight: 900;
+    }
+    .carry-head h3 {
+      margin: 0;
+      color: var(--white);
+      font-size: 20px;
+      line-height: 1.35;
+    }
+    .carry-meta {
+      display: flex;
+      flex: 0 0 auto;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 6px;
+    }
+    .carry-meta span {
+      padding: 4px 7px;
+      border: 1px solid rgba(255, 255, 255, .24);
+      border-radius: 4px;
+      background: rgba(255, 255, 255, .08);
+      font-size: 10px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+    .carry-body {
+      padding: 15px 18px 17px;
+      background: #fbfcf9;
+    }
+    .carry-intro {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.65;
+    }
+    .carry-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin: 12px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .carry-item {
+      position: relative;
+      display: grid;
+      grid-template-columns: 22px minmax(0, 1fr);
+      gap: 9px;
+      align-items: start;
+      min-height: 66px;
+      padding: 10px;
+      border: 1px solid #dde5da;
+      border-radius: 6px;
+      background: var(--white);
+      cursor: pointer;
+      transition: border-color .2s, background-color .2s;
+    }
+    .carry-item:hover {
+      border-color: #b9cbb3;
+      background: #f6f9f3;
+    }
+    .carry-item input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+    .carry-check {
+      width: 20px;
+      height: 20px;
+      display: grid;
+      place-items: center;
+      margin-top: 1px;
+      border: 1px solid #bdcab8;
+      border-radius: 5px;
+      background: var(--white);
+      transition: border-color .2s, background-color .2s;
+    }
+    .carry-check::after {
+      content: "";
+      width: 8px;
+      height: 4px;
+      border-left: 2px solid var(--white);
+      border-bottom: 2px solid var(--white);
+      opacity: 0;
+      transform: rotate(-45deg) scale(.6);
+      transition: opacity .15s, transform .15s;
+    }
+    .carry-item input:focus-visible + .carry-check {
+      outline: 3px solid rgba(181, 139, 64, .28);
+      outline-offset: 2px;
+    }
+    .carry-item input:checked + .carry-check {
+      border-color: var(--green);
+      background: var(--green);
+    }
+    .carry-item input:checked + .carry-check::after {
+      opacity: 1;
+      transform: rotate(-45deg) scale(1);
+    }
+    .carry-copy {
+      min-width: 0;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.55;
+    }
+    .carry-copy strong {
+      display: block;
+      margin-bottom: 2px;
+      color: var(--green-deep);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+    .carry-item input:checked ~ .carry-copy strong {
+      color: #6c7d68;
+      text-decoration: line-through;
     }
     details.note-box {
       overflow: hidden;
@@ -745,6 +959,7 @@
       .section-head { align-items: flex-start; flex-direction: column; gap: 8px; }
       .card-track > article { flex-basis: calc((100% - 12px) / 2); }
       .section-head .track-controls { align-self: flex-end; margin-top: -8px; }
+      .carry-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
     @media (max-width: 620px) {
@@ -777,15 +992,32 @@
       }
       .card-track > article { flex-basis: 86%; }
       .track-controls { display: none; }
-      .restaurant-card { min-height: 210px; }
+      .meal-controls { display: none; }
+      .meal-track {
+        margin-right: -15px;
+        padding-right: 15px;
+      }
+      .meal-pick { flex-basis: 82%; }
+      .meal-pick-visual { height: 98px; }
       .play-card { min-height: 340px; }
       .play-visual { height: 138px; }
+      .carry-head {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+        padding: 16px;
+      }
+      .carry-head h3 { font-size: 18px; }
+      .carry-meta { justify-content: flex-start; }
+      .carry-body { padding: 13px 14px 15px; }
+      .carry-list { grid-template-columns: 1fr; }
+      .carry-item { min-height: 0; }
     }
 
     @media print {
       .topbar { display: none; }
       body { background: #fff; }
-      .timeline-card, .side-card, .route-card, .restaurant-card, .play-card, .note-box, .key-item { box-shadow: none; break-inside: avoid; }
+      .timeline-card, .side-card, .route-card, .meal-pick, .play-card, .carry-card, .note-box, .key-item { box-shadow: none; break-inside: avoid; }
       .section { padding: 18px 0; }
     }
   </style>
@@ -803,7 +1035,6 @@
         <a href="#saturday">周六</a>
         <a href="#sunday">周日</a>
         <a href="#play">玩什么</a>
-        <a href="#dining">吃哪家</a>
         <a href="#transport">交通</a>
         <a href="#notes">备注</a>
       </nav>
@@ -899,6 +1130,57 @@
               <div class="timeline-content">
                 <h4>午饭，去森林公园 1 号门</h4>
                 <p>海湾片区吃饭，饭后约 4.9 公里、15 分钟到公园；15:30 停止入园。</p>
+                <div class="meal-picks">
+                  <div class="meal-picks-head">
+                    <strong>午饭候选 · 3 家</strong>
+                    <div class="meal-controls" data-track-controls="sat-lunch-track">
+                      <button class="meal-arrow" type="button" data-track-prev aria-label="上一家午饭餐厅">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m15 18-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      </button>
+                      <button class="meal-arrow" type="button" data-track-next aria-label="下一家午饭餐厅">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9 18 6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="meal-track" id="sat-lunch-track" tabindex="0" aria-label="周六午饭餐厅候选">
+                    <article class="meal-pick">
+                      <div class="meal-pick-visual">
+                        <img src="./trip-final-assets/restaurants/haian-nongjiacai.jpg" alt="海湾农家菜店内菜单灯箱实拍" loading="lazy">
+                        <span class="meal-pick-label">高德评价图</span>
+                      </div>
+                      <div class="meal-pick-body">
+                        <div class="meal-pick-top"><h5>海湾农家菜</h5><span class="meal-pick-tag">首选</span></div>
+                        <p class="meal-pick-meta">美团 3.9 · 距 1 号门约 4.2 公里</p>
+                        <p class="meal-pick-note">有 8–10 人桌和包厢，免费停车；导航与路线都按这家走。</p>
+                        <div class="meal-pick-foot"><a class="meal-link" href="http://dpurl.cn/zSnH1eOz" target="_blank" rel="noopener">美团看店</a></div>
+                      </div>
+                    </article>
+                    <article class="meal-pick is-alternative">
+                      <div class="meal-pick-visual">
+                        <img src="./trip-final-assets/restaurants/haian-miwei.jpg" alt="海湾觅味高德评价菜品图" loading="lazy">
+                        <span class="meal-pick-label">高德评价图</span>
+                      </div>
+                      <div class="meal-pick-body">
+                        <div class="meal-pick-top"><h5>海湾觅味</h5><span class="meal-pick-tag">备选</span></div>
+                        <p class="meal-pick-meta">美团 4.9 · 农垦菜 · 同片区</p>
+                        <p class="meal-pick-note">午饭首选没位时直接改订；口味口碑更适合当作第一替换。</p>
+                        <div class="meal-pick-foot"><a class="meal-link" href="http://dpurl.cn/EEGCvM9z" target="_blank" rel="noopener">美团看店</a></div>
+                      </div>
+                    </article>
+                    <article class="meal-pick is-alternative">
+                      <div class="meal-pick-visual">
+                        <img src="./trip-final-assets/restaurants/hexing-nongjiacai.jpg" alt="合兴农家菜五四店高德评价门面图" loading="lazy">
+                        <span class="meal-pick-label">高德评价图</span>
+                      </div>
+                      <div class="meal-pick-body">
+                        <div class="meal-pick-top"><h5>合兴农家菜（五四店）</h5><span class="meal-pick-tag">备选</span></div>
+                        <p class="meal-pick-meta">高德 4.0 · 午市 10:00–13:30</p>
+                        <p class="meal-pick-note">离公园方向略绕，只在前两家满位时启用。</p>
+                        <div class="meal-pick-foot"><a class="meal-link" href="https://uri.amap.com/navigation?from=121.690609,30.861518,上海海湾国家森林公园&amp;to=121.738575,30.865475,合兴农家菜五四店&amp;mode=car&amp;policy=1&amp;src=trip-final-page&amp;coordinate=gaode&amp;callnative=0" target="_blank" rel="noopener">高德导航</a></div>
+                      </div>
+                    </article>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="timeline-item">
@@ -912,19 +1194,133 @@
               <div class="time">16:20–18:20</div>
               <div class="timeline-content">
                 <h4>奉贤晚饭</h4>
-                <p>首选虹辉饭店；想最省事去小木屋，想吃地方菜去海湾觅味，按当天雨势和体力选。晚饭不离开奉贤。</p>
+                <p>晚饭统一在奉贤吃完，再去采购早餐；按雨势、体力和停车方便程度选一家。</p>
+                <div class="meal-picks">
+                  <div class="meal-picks-head">
+                    <strong>晚饭候选 · 4 家</strong>
+                    <div class="meal-controls" data-track-controls="sat-dinner-track">
+                      <button class="meal-arrow" type="button" data-track-prev aria-label="上一家晚饭餐厅">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m15 18-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      </button>
+                      <button class="meal-arrow" type="button" data-track-next aria-label="下一家晚饭餐厅">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9 18 6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="meal-track" id="sat-dinner-track" tabindex="0" aria-label="周六晚饭餐厅候选">
+                    <article class="meal-pick">
+                      <div class="meal-pick-visual">
+                        <img src="./trip-final-assets/restaurants/diguo-nanian.jpg" alt="地锅那年洪庙店高德评价食材图" loading="lazy">
+                        <span class="meal-pick-label">高德评价图</span>
+                      </div>
+                      <div class="meal-pick-body">
+                        <div class="meal-pick-top"><h5>地锅那年（洪庙店）</h5><span class="meal-pick-tag">首选</span></div>
+                        <p class="meal-pick-meta">美团 4.4 · 地方菜 · 洪庙片区</p>
+                        <p class="meal-pick-note">热乎、适合 8 人围桌；更靠近当晚回民宿方向。</p>
+                        <div class="meal-pick-foot"><a class="meal-link" href="http://dpurl.cn/TcAqcsUz" target="_blank" rel="noopener">美团看店</a></div>
+                      </div>
+                    </article>
+                    <article class="meal-pick is-alternative">
+                      <div class="meal-pick-visual">
+                        <img src="./trip-final-assets/restaurants/xiaomuwu.jpg" alt="上海小木屋花园度假村高德评价外观图" loading="lazy">
+                        <span class="meal-pick-label">高德评价图</span>
+                      </div>
+                      <div class="meal-pick-body">
+                        <div class="meal-pick-top"><h5>小木屋</h5><span class="meal-pick-tag">省事备选</span></div>
+                        <p class="meal-pick-meta">住宿型度假村 · 饭后直接回民宿</p>
+                        <p class="meal-pick-note">只当吃饭备选；卡丁车、KTV 等项目未确认对非住客开放。</p>
+                        <div class="meal-pick-foot"><a class="meal-link" href="#transport">看备选路线</a></div>
+                      </div>
+                    </article>
+                    <article class="meal-pick is-alternative">
+                      <div class="meal-pick-visual">
+                        <img src="./trip-final-assets/restaurants/yipinxian.jpg" alt="一品鲜高德评价白灼虾图" loading="lazy">
+                        <span class="meal-pick-label">高德评价图</span>
+                      </div>
+                      <div class="meal-pick-body">
+                        <div class="meal-pick-top"><h5>一品鲜</h5><span class="meal-pick-tag">备选</span></div>
+                        <p class="meal-pick-meta">美团 4.8 · 本地菜 · 停车方便</p>
+                        <p class="meal-pick-note">适合想吃本地海鲜和小炒的一桌，出发前按 8 人确认桌型。</p>
+                        <div class="meal-pick-foot"><a class="meal-link" href="http://dpurl.cn/bi2nohpz" target="_blank" rel="noopener">美团看店</a></div>
+                      </div>
+                    </article>
+                    <article class="meal-pick is-alternative">
+                      <div class="meal-pick-visual">
+                        <img src="./trip-final-assets/restaurants/haian-miwei.jpg" alt="海湾觅味高德评价菜品图" loading="lazy">
+                        <span class="meal-pick-label">高德评价图</span>
+                      </div>
+                      <div class="meal-pick-body">
+                        <div class="meal-pick-top"><h5>海湾觅味</h5><span class="meal-pick-tag">备选</span></div>
+                        <p class="meal-pick-meta">美团 4.9 · 农垦菜 · 海湾片区</p>
+                        <p class="meal-pick-note">下午玩完就近吃；如果已经回到奉城镇，不再折返。</p>
+                        <div class="meal-pick-foot"><a class="meal-link" href="http://dpurl.cn/EEGCvM9z" target="_blank" rel="noopener">美团看店</a></div>
+                      </div>
+                    </article>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="timeline-item">
-              <div class="time">18:20–19:00</div>
+              <div class="time">18:20–19:40</div>
               <div class="timeline-content">
                 <h4>采购早餐，回民宿</h4>
-                <p>途中找营业中的超市或便利店，回民宿约 12.9 公里、23–30 分钟。</p>
+                <p>沿奉城镇方向采购 8 份次日早餐，再回民宿；车程约 23–30 分钟，采购另留 20 分钟。</p>
                 <span class="route-chip">采购 8 份次日早餐</span>
+                <div class="meal-picks">
+                  <div class="meal-picks-head">
+                    <strong>采购点 · 3 家</strong>
+                    <div class="meal-controls" data-track-controls="breakfast-supply-track">
+                      <button class="meal-arrow" type="button" data-track-prev aria-label="上一家早餐采购点">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m15 18-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      </button>
+                      <button class="meal-arrow" type="button" data-track-next aria-label="下一家早餐采购点">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9 18 6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="meal-track" id="breakfast-supply-track" tabindex="0" aria-label="周六晚间早餐采购点">
+                    <article class="meal-pick supply-pick">
+                      <div class="meal-pick-visual">
+                        <img src="./trip-final-assets/restaurants/breakfast-bairun.jpg" alt="百润乐家生鲜超市高德评价货架图" loading="lazy">
+                        <span class="meal-pick-label">高德评价图</span>
+                      </div>
+                      <div class="meal-pick-body">
+                        <div class="meal-pick-top"><h5>百润乐家生鲜超市</h5><span class="meal-pick-tag">首选</span></div>
+                        <p class="meal-pick-meta">07:00–23:30 · 奉城镇方向</p>
+                        <p class="meal-pick-note">适合买面包、牛奶、水果、瓶装咖啡和豆浆，8 人份优先在这里解决。</p>
+                        <div class="meal-pick-foot"><a class="meal-link" href="https://uri.amap.com/navigation?from=121.672175,30.940725,那田土灶乌篷船&amp;to=121.683025,30.925525,百润乐家生鲜超市&amp;mode=car&amp;policy=1&amp;src=trip-final-page&amp;coordinate=gaode&amp;callnative=0" target="_blank" rel="noopener">高德导航</a></div>
+                      </div>
+                    </article>
+                    <article class="meal-pick supply-pick is-alternative">
+                      <div class="meal-pick-visual">
+                        <img src="./trip-final-assets/restaurants/breakfast-lianhua.jpg" alt="联华超市浦东路店高德评价门面图" loading="lazy">
+                        <span class="meal-pick-label">高德评价图</span>
+                      </div>
+                      <div class="meal-pick-body">
+                        <div class="meal-pick-top"><h5>联华超市（浦东路店）</h5><span class="meal-pick-tag">备选</span></div>
+                        <p class="meal-pick-meta">08:00–22:00 · 离百润乐家很近</p>
+                        <p class="meal-pick-note">品类备选；如果首选缺货，直接到这家补齐 8 人份。</p>
+                        <div class="meal-pick-foot"><a class="meal-link" href="https://uri.amap.com/navigation?from=121.672175,30.940725,那田土灶乌篷船&amp;to=121.684576,30.926250,联华超市浦东路店&amp;mode=car&amp;policy=1&amp;src=trip-final-page&amp;coordinate=gaode&amp;callnative=0" target="_blank" rel="noopener">高德导航</a></div>
+                      </div>
+                    </article>
+                    <article class="meal-pick supply-pick is-alternative">
+                      <div class="meal-pick-visual">
+                        <img src="./trip-final-assets/restaurants/breakfast-family.jpg" alt="全家便利店高德品牌图" loading="lazy">
+                        <span class="meal-pick-label">高德图</span>
+                      </div>
+                      <div class="meal-pick-body">
+                        <div class="meal-pick-top"><h5>全家便利店（瓦洪公路店）</h5><span class="meal-pick-tag">兜底</span></div>
+                        <p class="meal-pick-meta">24 小时 · 晚饭拖晚也能买</p>
+                        <p class="meal-pick-note">22:00 后只剩这家营业；8 人份别在一家赌库存。</p>
+                        <div class="meal-pick-foot"><a class="meal-link" href="https://uri.amap.com/navigation?from=121.672175,30.940725,那田土灶乌篷船&amp;to=121.692934,30.924600,全家便利店瓦洪公路店&amp;mode=car&amp;policy=1&amp;src=trip-final-page&amp;coordinate=gaode&amp;callnative=0" target="_blank" rel="noopener">高德导航</a></div>
+                      </div>
+                    </article>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="timeline-item" id="night">
-              <div class="time">19:00 起</div>
+              <div class="time">19:40 起</div>
               <div class="timeline-content">
                 <h4>民宿自由局</h4>
                 <p>麻将、KTV、桌游按大家状态选一个主项目，不再安排夜驾。</p>
@@ -1000,6 +1396,57 @@
               <div class="timeline-content">
                 <h4>青溪午饭</h4>
                 <p>屋里厢优先，7 人订大桌或包厢；没位换同组备选。</p>
+                <div class="meal-picks">
+                  <div class="meal-picks-head">
+                    <strong>午饭候选 · 3 家</strong>
+                    <div class="meal-controls" data-track-controls="sun-lunch-track">
+                      <button class="meal-arrow" type="button" data-track-prev aria-label="上一家青溪午饭餐厅">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m15 18-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      </button>
+                      <button class="meal-arrow" type="button" data-track-next aria-label="下一家青溪午饭餐厅">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9 18 6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="meal-track" id="sun-lunch-track" tabindex="0" aria-label="周日青溪午饭餐厅候选">
+                    <article class="meal-pick">
+                      <div class="meal-pick-visual">
+                        <img src="./trip-final-assets/restaurants/wulixiang.jpg" alt="屋里厢饭店高德评价餐桌与菜品图" loading="lazy">
+                        <span class="meal-pick-label">高德评价图</span>
+                      </div>
+                      <div class="meal-pick-body">
+                        <div class="meal-pick-top"><h5>屋里厢饭店</h5><span class="meal-pick-tag">首选</span></div>
+                        <p class="meal-pick-meta">距老街约 0.2 公里 · 人均约 80 元</p>
+                        <p class="meal-pick-note">本帮私房菜，有 10–20 人包厢和大桌；午饭后继续逛老街最顺。</p>
+                        <div class="meal-pick-foot"><a class="meal-link" href="http://dpurl.cn/5IDJ2GTz" target="_blank" rel="noopener">美团看店</a></div>
+                      </div>
+                    </article>
+                    <article class="meal-pick is-alternative">
+                      <div class="meal-pick-visual meal-pick-visual--fallback">
+                        <strong>聚味楼</strong>
+                        <small>暂无可靠门店图片</small>
+                      </div>
+                      <div class="meal-pick-body">
+                        <div class="meal-pick-top"><h5>聚味楼</h5><span class="meal-pick-tag">备选</span></div>
+                        <p class="meal-pick-meta">距老街约 0.1 公里 · 同片区</p>
+                        <p class="meal-pick-note">老街边上更好衔接下午行程；按 7 人确认桌型。</p>
+                        <div class="meal-pick-foot"><a class="meal-link" href="http://dpurl.cn/WKnb9MBz" target="_blank" rel="noopener">美团看店</a></div>
+                      </div>
+                    </article>
+                    <article class="meal-pick is-alternative">
+                      <div class="meal-pick-visual">
+                        <img src="./trip-final-assets/restaurants/caiji-qingcun.jpg" alt="财记小菜青村店高德评价春卷菜品图" loading="lazy">
+                        <span class="meal-pick-label">高德评价图</span>
+                      </div>
+                      <div class="meal-pick-body">
+                        <div class="meal-pick-top"><h5>财记小菜</h5><span class="meal-pick-tag">备选</span></div>
+                        <p class="meal-pick-meta">青溪老街周边 · 本地小菜</p>
+                        <p class="meal-pick-note">前两家没位时的同片区替换，不跨片区绕路。</p>
+                        <div class="meal-pick-foot"><a class="meal-link" href="http://dpurl.cn/9zc0bcFz" target="_blank" rel="noopener">美团看店</a></div>
+                      </div>
+                    </article>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="timeline-item">
@@ -1105,112 +1552,6 @@
       </div>
     </section>
 
-    <section class="section" id="dining">
-      <div class="wrap">
-        <div class="section-head">
-          <div class="section-head-copy">
-            <h2>三顿正餐，候选排成一条线</h2>
-            <p>按餐次从左到右排列；首选没位，就换同一餐的备选。</p>
-          </div>
-          <div class="track-controls" data-track-controls="dining-track">
-            <button class="track-arrow" type="button" data-track-prev aria-label="上一组餐厅">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m15 18-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-            <button class="track-arrow" type="button" data-track-next aria-label="下一组餐厅">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9 18 6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-          </div>
-        </div>
-
-        <div class="card-track" id="dining-track" tabindex="0" aria-label="餐厅候选横向卡片">
-          <article class="restaurant-card">
-            <div class="restaurant-meal"><span>周六午饭 · 海湾</span><span class="restaurant-tag">首选</span></div>
-            <div class="restaurant-top"><h4>海湾农家菜</h4></div>
-            <p class="restaurant-meta">美团 3.9 · 距 1 号门约 4.2 公里 · 免费停车</p>
-            <p class="restaurant-note">有 8–10 人桌和包厢，导航与路线都按这家走。</p>
-            <div class="restaurant-foot"><a class="restaurant-link" href="http://dpurl.cn/zSnH1eOz" target="_blank" rel="noopener">美团看店</a></div>
-          </article>
-
-          <article class="restaurant-card is-alternative">
-            <div class="restaurant-meal"><span>周六午饭 · 海湾</span><span class="restaurant-tag">备选</span></div>
-            <div class="restaurant-top"><h4>海湾觅味</h4></div>
-            <p class="restaurant-meta">美团 4.9 · 农垦菜 · 周六晚饭也可备选</p>
-            <p class="restaurant-note">同片区口味备选；午饭首选没位时，直接改订这家。</p>
-            <div class="restaurant-foot"><a class="restaurant-link" href="http://dpurl.cn/EEGCvM9z" target="_blank" rel="noopener">美团看店</a></div>
-          </article>
-
-          <article class="restaurant-card is-alternative">
-            <div class="restaurant-meal"><span>周六午饭 · 海湾</span><span class="restaurant-tag">备选</span></div>
-            <div class="restaurant-top"><h4>开心小筑</h4></div>
-            <p class="restaurant-meta">距森林公园 1 号门约 1.2 公里</p>
-            <p class="restaurant-note">离公园更近，适合午饭后尽快进园；人数和桌型出发前确认。</p>
-            <div class="restaurant-foot"><a class="restaurant-link" href="http://dpurl.cn/Sm0iznaz" target="_blank" rel="noopener">美团看店</a></div>
-          </article>
-
-          <article class="restaurant-card">
-            <div class="restaurant-meal"><span>周六晚饭 · 奉贤</span><span class="restaurant-tag">首选</span></div>
-            <div class="restaurant-top"><h4>虹辉饭店</h4></div>
-            <p class="restaurant-meta">约 10 分钟车程 · 本帮农家菜 + 小海鲜</p>
-            <p class="restaurant-note">有宴会厅、停车方便；出发前电话确认 8 人大桌。</p>
-            <div class="restaurant-foot"><span class="restaurant-text-action">出发前电话确认桌型</span></div>
-          </article>
-
-          <article class="restaurant-card is-alternative">
-            <div class="restaurant-meal"><span>周六晚饭 · 省事备选</span><span class="restaurant-tag">备选</span></div>
-            <div class="restaurant-top"><h4>小木屋</h4></div>
-            <p class="restaurant-meta">饭后直接回民宿 · 住宿型度假村</p>
-            <p class="restaurant-note">这次只当晚饭省事备选；卡丁车、KTV 等项目是否对非住客开放未确认。</p>
-            <div class="restaurant-foot"><span class="restaurant-text-action">不把未确认项目排进行程</span></div>
-          </article>
-
-          <article class="restaurant-card is-alternative">
-            <div class="restaurant-meal"><span>周六晚饭 · 奉贤</span><span class="restaurant-tag">备选</span></div>
-            <div class="restaurant-top"><h4>地锅那年</h4></div>
-            <p class="restaurant-meta">美团 4.4 · 地方菜备选</p>
-            <p class="restaurant-note">想吃热乎的地锅菜就换这家；出发前按 8 人确认桌型。</p>
-            <div class="restaurant-foot"><a class="restaurant-link" href="http://dpurl.cn/TcAqcsUz" target="_blank" rel="noopener">美团看店</a></div>
-          </article>
-
-          <article class="restaurant-card is-alternative">
-            <div class="restaurant-meal"><span>周六晚饭 · 奉贤</span><span class="restaurant-tag">备选</span></div>
-            <div class="restaurant-top"><h4>一品鲜</h4></div>
-            <p class="restaurant-meta">美团 4.8 · 本地菜备选</p>
-            <p class="restaurant-note">适合想再换一家本地口味的桌；出发前按 8 人确认桌型。</p>
-            <div class="restaurant-foot"><a class="restaurant-link" href="http://dpurl.cn/bi2nohpz" target="_blank" rel="noopener">美团看店</a></div>
-          </article>
-
-          <article class="restaurant-card">
-            <div class="restaurant-meal"><span>周日午饭 · 青溪</span><span class="restaurant-tag">首选</span></div>
-            <div class="restaurant-top"><h4>屋里厢饭店</h4></div>
-            <p class="restaurant-meta">距老街约 0.2 公里 · 本帮私房菜 · 人均约 80 元</p>
-            <p class="restaurant-note">有 10–20 人包厢和大桌，午饭后继续逛老街最顺。</p>
-            <div class="restaurant-foot"><a class="restaurant-link" href="http://dpurl.cn/5IDJ2GTz" target="_blank" rel="noopener">美团看店</a></div>
-          </article>
-
-          <article class="restaurant-card is-alternative">
-            <div class="restaurant-meal"><span>周日午饭 · 青溪</span><span class="restaurant-tag">备选</span></div>
-            <div class="restaurant-top"><h4>聚味楼</h4></div>
-            <p class="restaurant-meta">距老街约 0.1 公里</p>
-            <p class="restaurant-note">老街边上更好衔接下午行程；按 7 人确认桌型。</p>
-            <div class="restaurant-foot"><a class="restaurant-link" href="http://dpurl.cn/WKnb9MBz" target="_blank" rel="noopener">美团看店</a></div>
-          </article>
-
-          <article class="restaurant-card is-alternative">
-            <div class="restaurant-meal"><span>周日午饭 · 青溪</span><span class="restaurant-tag">备选</span></div>
-            <div class="restaurant-top"><h4>财记小菜</h4></div>
-            <p class="restaurant-meta">青溪老街周边 · 本地小菜备选</p>
-            <p class="restaurant-note">前两家没位时的同片区替换，不跨片区绕路。</p>
-            <div class="restaurant-foot"><a class="restaurant-link" href="http://dpurl.cn/9zc0bcFz" target="_blank" rel="noopener">美团看店</a></div>
-          </article>
-        </div>
-
-        <div class="dining-note">
-          <strong>三十悦居：</strong>环境和口碑不错，但门店不在这条线路上，本次不安排；以后去朱家角再吃。
-          <a class="restaurant-link" href="http://dpurl.cn/bpCmc7dz" target="_blank" rel="noopener">美团看店</a>
-        </div>
-      </div>
-    </section>
-
     <section class="section" id="transport">
       <div class="wrap">
         <div class="section-head">
@@ -1278,10 +1619,71 @@
       <div class="wrap">
         <div class="section-head">
           <h2>执行备注</h2>
-          <p>只保留会影响执行的 3 件事。</p>
+          <p>只保留会影响执行的 4 件事。</p>
         </div>
 
         <div class="notes-grid">
+          <article class="carry-card" aria-labelledby="carry-title">
+            <div class="carry-head">
+              <div class="carry-heading">
+                <span class="carry-kicker">出发前装包</span>
+                <h3 id="carry-title">按清单过一遍，别到民宿再补</h3>
+              </div>
+              <div class="carry-meta" aria-label="出行规模">
+                <span>8 人</span>
+                <span>2 车</span>
+                <span>民宿 1 晚</span>
+              </div>
+            </div>
+            <div class="carry-body">
+              <p class="carry-intro">周六出发前逐项过一遍；采购与分装用品集中放后备箱，晚上回民宿直接分装早餐。</p>
+              <ul class="carry-list">
+                <li>
+                  <label class="carry-item">
+                    <input type="checkbox">
+                    <span class="carry-check" aria-hidden="true"></span>
+                    <span class="carry-copy"><strong>证件与订单</strong>全员身份证；司机带驾照、行驶证；保存民宿和餐厅订单。</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="carry-item">
+                    <input type="checkbox">
+                    <span class="carry-check" aria-hidden="true"></span>
+                    <span class="carry-copy"><strong>电子续航</strong>手机提前充满，带充电宝、数据线和两台车的车充。</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="carry-item">
+                    <input type="checkbox">
+                    <span class="carry-check" aria-hidden="true"></span>
+                    <span class="carry-copy"><strong>天气装备</strong>薄外套或防风衣、雨伞、防滑鞋；湖边风大，周日有小雨。</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="carry-item">
+                    <input type="checkbox">
+                    <span class="carry-check" aria-hidden="true"></span>
+                    <span class="carry-copy"><strong>民宿娱乐</strong>有常玩的桌游或扑克带 1–2 套；麻将、KTV 入住时先确认设备。</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="carry-item">
+                    <input type="checkbox">
+                    <span class="carry-check" aria-hidden="true"></span>
+                    <span class="carry-copy"><strong>采购分装</strong>折叠购物袋、保温袋、纸巾和垃圾袋；牛奶水果回民宿后冷藏。</span>
+                  </label>
+                </li>
+                <li>
+                  <label class="carry-item">
+                    <input type="checkbox">
+                    <span class="carry-check" aria-hidden="true"></span>
+                    <span class="carry-copy"><strong>随身小药包</strong>创可贴、肠胃药、晕车药和个人常用药。</span>
+                  </label>
+                </li>
+              </ul>
+            </div>
+          </article>
+
           <details class="note-box" open>
             <summary><span>用车与集合</span><span>+</span></summary>
             <div class="note-content">
@@ -1407,6 +1809,12 @@
           const label = playVisual.querySelector('.play-visual-label')?.outerHTML || '';
           playVisual.classList.add('play-visual--fallback');
           playVisual.innerHTML = `${img.alt}${label}`;
+          return;
+        }
+        const mealVisual = img.closest('.meal-pick-visual');
+        if (mealVisual) {
+          mealVisual.classList.add('meal-pick-visual--fallback');
+          mealVisual.innerHTML = `<strong>${img.alt}</strong><small>图片暂缺 · 出发前再确认</small>`;
           return;
         }
         const slide = img.closest('.carousel-slide');
